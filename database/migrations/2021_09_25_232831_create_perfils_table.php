@@ -17,15 +17,15 @@ class CreatePerfilsTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('observacao');
-            $table->string('actions');
-            $table->string('reports');
-            $table->string('actions_api');
+            $table->string('observacao')->nullable();
+            $table->string('actions')->nullable();
+            $table->string('reports')->nullable();
+            $table->string('actions_api')->nullable();
 
-            $table->unsignedBigInteger('user_id_cadastro')->nullable(true);
+            $table->unsignedBigInteger('user_id_cadastro')->nullable();
             $table->foreign('user_id_cadastro')->references('id')->on('users');
 
-            $table->unsignedBigInteger('user_id_alteracao')->nullable(true);
+            $table->unsignedBigInteger('user_id_alteracao')->nullable();
             $table->foreign('user_id_alteracao')->references('id')->on('users');
 
             $table->softDeletes();

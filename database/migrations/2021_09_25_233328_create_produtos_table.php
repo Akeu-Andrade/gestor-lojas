@@ -15,27 +15,25 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->string('descricao');
-            $table->integer('quantidade');
-            $table->integer('valor_uni');
-            $table->string('imagem');
-            $table->integer('quantidade_estoque');
-            $table->string('observacao');
-            $table->integer('status_produto');
-            $table->integer('desconto_porcento');
-            $table->boolean('is_retirar');
-            $table->integer('valor_entrega');
+            $table->string('nome');
+            $table->string('descricao')->nullable();
+            $table->integer('quantidade')->nullable();
+            $table->double('valor_uni')->nullable();
+            $table->string('imagem')->nullable();
+            $table->double('quantidade_estoque')->nullable();
+            $table->string('observacao')->nullable();
+            $table->integer('status_produto')->nullable();
+            $table->double('desconto_porcento')->nullable();
+            $table->boolean('is_retirar')->nullable();
+            $table->double('valor_entrega')->nullable();
 
-            $table->unsignedBigInteger('variacao_produto_id')->nullable(true);
-            $table->foreign('variacao_produto_id')->references('id')->on('variacao_produtos');
-
-            $table->unsignedBigInteger('categoria_produto_id')->nullable(true);
+            $table->unsignedBigInteger('categoria_produto_id')->nullable();
             $table->foreign('categoria_produto_id')->references('id')->on('categoria_produtos');
 
-            $table->unsignedBigInteger('user_id_cadastro')->nullable(true);
+            $table->unsignedBigInteger('user_id_cadastro')->nullable();
             $table->foreign('user_id_cadastro')->references('id')->on('users');
 
-            $table->unsignedBigInteger('user_id_alteracao')->nullable(true);
+            $table->unsignedBigInteger('user_id_alteracao')->nullable();
             $table->foreign('user_id_alteracao')->references('id')->on('users');
 
             $table->softDeletes();

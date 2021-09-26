@@ -14,7 +14,7 @@ class AddPerfilIdTableUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('perfil_id')->nullable(true);
+            $table->unsignedBigInteger('perfil_id')->nullable();
             $table->foreign('perfil_id')->references('id')->on('perfils');
         });
     }

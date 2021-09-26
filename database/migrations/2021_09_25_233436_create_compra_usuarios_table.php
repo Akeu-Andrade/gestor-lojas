@@ -17,18 +17,18 @@ class CreateCompraUsuariosTable extends Migration
             $table->id();
             $table->integer('status_compra_usuario')->default(1); //Enum
             $table->integer('forma_pagamento')->default(1); //Enum
-            $table->integer('quantidade');
+            $table->double('quantidade')->nullable();
 
-            $table->unsignedBigInteger('produto_id')->nullable(true);
+            $table->unsignedBigInteger('produto_id')->nullable();
             $table->foreign('produto_id')->references('id')->on('produtos');
 
-            $table->unsignedBigInteger('user_comprador_id')->nullable(true);
+            $table->unsignedBigInteger('user_comprador_id')->nullable();
             $table->foreign('user_comprador_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('user_id_cadastro')->nullable(true);
+            $table->unsignedBigInteger('user_id_cadastro')->nullable();
             $table->foreign('user_id_cadastro')->references('id')->on('users');
 
-            $table->unsignedBigInteger('user_id_alteracao')->nullable(true);
+            $table->unsignedBigInteger('user_id_alteracao')->nullable();
             $table->foreign('user_id_alteracao')->references('id')->on('users');
 
             $table->softDeletes();

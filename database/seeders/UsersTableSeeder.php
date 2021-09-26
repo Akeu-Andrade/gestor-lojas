@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@material.com',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
+            'perfil_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
