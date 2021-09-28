@@ -28,7 +28,7 @@
             &copy;
             <script>
                 document.write(new Date().getFullYear())
-            </script>, Desenvolvido com <i class="material-icons">favorite</i> por
+            </script>, Desenvolvido sob encomenda com <i class="material-icons">favorite</i> por
                 <a href="https://www.linkedin.com/in/akeuandrade/" target="_blank">Akeu</a>.
         </div>
     </div>
