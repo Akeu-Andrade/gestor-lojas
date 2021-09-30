@@ -18,6 +18,8 @@ class Menu
      */
     private $user;
 
+    private $active = '$activePage';
+
     /**
      * Menu constructor.
      * @param Collection $itens
@@ -54,13 +56,14 @@ class Menu
             return "";
         }
 
+
+//        $html = "<li class='nav-item {{ ($this->active == \"profile\" || $this->active == \"user-management\") ? \"active\" : \"\" }}'>";
+
         $html = "<li>";
-
         if ($item->hasSubMenu()) {
-
             $html .= "
                     <a href='#'>
-                        <i class='{$item->getIcon()}'></i> {$item->getName()} <span class='fas fa-chevron-down'></span>
+                        <i class='material-icons'>{$item->getIcon()}</i> {$item->getName()} <span class='fas fa-chevron-down'></span>
                     </a>
                     <ul class='nav child_menu'>";
             foreach ($item->getSubMenu() as $key => $subItem) {
@@ -85,11 +88,13 @@ class Menu
     private function renderItem(ItemMenu $item): string
     {
         return "
-            <li class='nav-item'>
-                <a href='" . url($item->getLink()) . "'>
-                    <i class='" . $item->getIcon() . "'></i> " . $item->getName() . "
+            <li class='nav-item{{ $this->active == \"dashboard\" ? \" active\" : \"\" }}'>
+                <a class=\"nav-link\" href='" . url($item->getLink()) . "'>
+                    <i class='material-icons'>{$item->getIcon()}</i>
+                     <p> ". $item->getName() ." </p>
                 </a>
             </li>";
     }
+//    <a href='" . url($item->getLink()) . "'>
 }
 

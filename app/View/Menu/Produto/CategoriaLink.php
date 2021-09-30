@@ -13,7 +13,7 @@ class CategoriaLink extends LinkMenu
 
     public function getIcon(): String
     {
-        return "fas fa-tag";
+        return 'category';
     }
 
     public function getPermission(): String
@@ -23,6 +23,6 @@ class CategoriaLink extends LinkMenu
 
     public function getLink(): String
     {
-        return route('categoria.index');
+        return route('categoria');
     }
 }

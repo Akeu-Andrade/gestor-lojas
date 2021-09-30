@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Admin\Produto;
+namespace App\Modules\Admin;
 
 use App\Business\Produto\Repository\CategoriaProduto\CategoriaProdutoRepository;
 use App\Business\Produto\Repository\CategoriaProduto\CategoriaProdutoRepositoryInterface;
-use App\Http\Controllers\Produto\CategoriaProdutoController;
+use App\Http\Controllers\Web\Produto\CategoriaProdutoController;
 use App\Modules\Actions\GroupActionResource;
 use App\Modules\Module;
 use Illuminate\Contracts\Foundation\Application;

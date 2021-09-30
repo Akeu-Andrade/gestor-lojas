@@ -7,7 +7,17 @@
     </div>
     <div class="sidebar-wrapper">
 
+
+{{--        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">--}}
+{{--            <div class="menu_section">--}}
+{{--                @menu()--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+
+
         <ul class="nav">
+            @menu()
             <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('home') }}">
                     <i class="material-icons">dashboard</i>

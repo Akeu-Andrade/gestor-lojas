@@ -22,7 +22,7 @@ class CategoriaProdutoController extends BaseController
         $this->setPages(10);
         $this->setFolderView("admin.produto.categoria");
         $this->setName("Categoria do produto");
-        $this->setUrl(route('admin.categoria.index'));
+        $this->setUrl(route('categoria.index'));
         $this->setOrderList(['created_at', 'desc']);
     }
 

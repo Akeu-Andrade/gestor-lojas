@@ -14,7 +14,7 @@ class ProdutoHeader extends HeaderMenu
 
     public function getIcon(): String
     {
-        return "fas fa-car";
+        return 'local_mall';
     }
 
     /**
