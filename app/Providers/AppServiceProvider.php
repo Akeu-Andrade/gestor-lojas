@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Providers;
-
 use App\Modules\Module;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\Facades\Schema;

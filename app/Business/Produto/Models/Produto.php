@@ -27,23 +27,23 @@ use Illuminate\Support\Carbon;
  * @property float|null $desconto_porcento
  * @property int|null $is_retirar
  * @property float|null $valor_entrega
- * @property int|null $categoria_produto_id
+ * @property int|null $categoria_id
  * @property int|null $user_id_cadastro
  * @property int|null $user_id_alteracao
  * @property Carbon|null $deleted_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read \App\Business\Produto\Models\CategoriaProduto|null $categoriaProduto
- * @property-read Collection|\App\Business\Produto\Models\CompraUsuario[] $compraUsuario
+ * @property-read Categoria|null $categoria
+ * @property-read Collection|CompraUsuario[] $compraUsuario
  * @property-read int|null $compra_usuario_count
  * @property-read User $usuarioCadastro
- * @property-read Collection|\App\Business\Produto\Models\VariacaoProduto[] $variacaoProduto
+ * @property-read Collection|VariacaoProduto[] $variacaoProduto
  * @property-read int|null $variacao_produto_count
  * @method static Builder|Produto newModelQuery()
  * @method static Builder|Produto newQuery()
  * @method static \Illuminate\Database\Query\Builder|Produto onlyTrashed()
  * @method static Builder|Produto query()
- * @method static Builder|Produto whereCategoriaProdutoId($value)
+ * @method static Builder|Produto whereCategoriaId($value)
  * @method static Builder|Produto whereCreatedAt($value)
  * @method static Builder|Produto whereCreatedAtAte(string $data)
  * @method static Builder|Produto whereCreatedAtDe(string $data)
@@ -80,7 +80,7 @@ class Produto extends Model
         'imagem',
         'quantidade_estoque',
         'observacao',
-        'categoria_produto_id',
+        'categoria_id',
         'status_produto',
         'desconto_porcento',
         'is_retirar',
@@ -109,9 +109,9 @@ class Produto extends Model
     /**
      * @return BelongsTo
      */
-    public function categoriaProduto(): BelongsTo
+    public function categoria(): BelongsTo
     {
-        return $this->belongsTo(CategoriaProduto::class);
+        return $this->belongsTo(Categoria::class);
     }
 
     /**

@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
-class CategoriaProdutosTableSeeder extends Seeder
+class CategoriasTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class CategoriaProdutosTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categoria_produtos')->insert([
+        DB::table('categorias')->insert([
             'name' => 'Alimento',
             'created_at' => now(),
             'updated_at' => now()

@@ -11,6 +11,11 @@ class CategoriaLink extends LinkMenu
         return "Categoria";
     }
 
+    public function getComponete(): String
+    {
+        return 'categoria';
+    }
+
     public function getIcon(): String
     {
         return 'category';

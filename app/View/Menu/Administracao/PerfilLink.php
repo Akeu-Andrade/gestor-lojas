@@ -11,6 +11,11 @@ class PerfilLink extends LinkMenu
         return "Perfis";
     }
 
+    public function getComponete(): string
+    {
+        return "perfils";
+    }
+
     public function getIcon(): string
     {
         return "fas fa-unlock-alt";
@@ -18,7 +23,7 @@ class PerfilLink extends LinkMenu
 
     public function getLink(): string
     {
-        return route('admin.perfil.index');
+        return route('perfil');
     }
 
     public function getPermission(): string

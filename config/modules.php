@@ -6,5 +6,5 @@ use App\Modules\Admin\ProdutoModule;
 return [
     HomeModule::class,
 //    AdministracaoModule::class,
-//    ProdutoModule::class,
+    ProdutoModule::class,
 ];

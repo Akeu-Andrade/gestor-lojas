@@ -56,10 +56,7 @@ class Menu
             return "";
         }
 
-
-//        $html = "<li class='nav-item {{ ($this->active == \"profile\" || $this->active == \"user-management\") ? \"active\" : \"\" }}'>";
-
-        $html = "<li>";
+        $html = "";
         if ($item->hasSubMenu()) {
             $html .= "
                     <a href='#'>
@@ -76,8 +73,7 @@ class Menu
         } else {
             $html .= $this->renderItem($item);
         }
-
-        $html .= "</li>";
+//        dd($html);
         return $html;
     }
 
@@ -88,13 +84,12 @@ class Menu
     private function renderItem(ItemMenu $item): string
     {
         return "
-            <li class='nav-item{{ $this->active == \"dashboard\" ? \" active\" : \"\" }}'>
+            <li class='nav-item{{ $this->active == \"{$item->getComponete()}\" ? \" active\" : \"\" }}'>
                 <a class=\"nav-link\" href='" . url($item->getLink()) . "'>
                     <i class='material-icons'>{$item->getIcon()}</i>
                      <p> ". $item->getName() ." </p>
                 </a>
             </li>";
     }
-//    <a href='" . url($item->getLink()) . "'>
 }
 
