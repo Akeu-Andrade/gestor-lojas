@@ -6,6 +6,7 @@ namespace App\View\Menu;
 
 use App\Models\User;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\URL;
 
 class Menu
 {
@@ -83,8 +84,13 @@ class Menu
      */
     private function renderItem(ItemMenu $item): string
     {
+        $ativo = '';
+        if(URL::current() == $item->getLink()){
+            $ativo = 'active';
+        }
+
         return "
-            <li class='nav-item{{ $this->active == \"{$item->getComponete()}\" ? \" active\" : \"\" }}'>
+            <li class='nav-item $ativo'>
                 <a class=\"nav-link\" href='" . url($item->getLink()) . "'>
                     <i class='material-icons'>{$item->getIcon()}</i>
                      <p> ". $item->getName() ." </p>

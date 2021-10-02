@@ -13,7 +13,7 @@ use Illuminate\Support\Carbon;
  * App\Business\Seguranca\Models\Perfil
  *
  * @property int $id
- * @property string $name
+ * @property string $nome
  * @property string|null $observacao
  * @property array|null $actions
  * @property array|null $reports
@@ -68,29 +68,30 @@ class Perfil extends Model
     public function getAllowedActions(): array
     {
         if (!empty($this->actions)) {
-            return json_decode((string) $this->actions, true);
+//               dd(json_decode((string) $this->actions, true));
+            return $this->actions;
         } else {
             return [];
         }
     }
 
-    public function getAllowedActionsApi(): array
-    {
-        if (!empty($this->actions_api)) {
-            return json_decode($this->actions_api, true);
-        } else {
-            return [];
-        }
-    }
+//    public function getAllowedActionsApi(): array
+//    {
+//        if (!empty($this->actions_api)) {
+//            return json_decode($this->actions_api, true);
+//        } else {
+//            return [];
+//        }
+//    }
 
-    public function getAllowedReports(): array
-    {
-        if (!empty($this->reports)) {
-            return json_decode($this->reports, true);
-        } else {
-            return [];
-        }
-    }
+//    public function getAllowedReports(): array
+//    {
+//        if (!empty($this->reports)) {
+//            return json_decode($this->reports, true);
+//        } else {
+//            return [];
+//        }
+//    }
 
     public function hasAction(string $action): bool
     {

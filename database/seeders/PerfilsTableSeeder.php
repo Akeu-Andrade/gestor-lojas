@@ -1,9 +1,9 @@
 <?php
 namespace Database\Seeders;
 
+use App\Business\Seguranca\Models\Perfil;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class PerfilsTableSeeder extends Seeder
 {
@@ -15,8 +15,7 @@ class PerfilsTableSeeder extends Seeder
     public function run()
     {
         DB::table('perfils')->insert([
-            'name' => 'Admin',
-            'observacao' => 'faz tudo',
+            'nome' => 'Admin',
             "actions" => json_encode([
                 "perfilcontroller@create",
                 "perfilcontroller@store",
@@ -26,8 +25,8 @@ class PerfilsTableSeeder extends Seeder
                 "perfilcontroller@index",
                 "perfilcontroller@show",
                 ]),
-            'created_at' => now(),
-            'updated_at' => now()
         ]);
+
+        factory(Perfil::class, 50)->create();
     }
 }

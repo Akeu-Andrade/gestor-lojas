@@ -4,7 +4,7 @@
 namespace App\Http\Middleware;
 
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CheckAuthorization

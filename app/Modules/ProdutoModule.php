@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Admin;
+namespace App\Modules;
 
 use App\Business\Produto\Repository\Categoria\CategoriaRepository;
 use App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface;
@@ -9,11 +9,9 @@ use App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface;
 use App\Http\Controllers\Web\Produto\CategoriaController;
 use App\Http\Controllers\Web\Produto\ProdutoController;
 use App\Modules\Actions\GroupActionResource;
-use App\Modules\Module;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
-use Illuminate\View\View;
 
 class ProdutoModule extends Module
 {
@@ -53,8 +51,8 @@ class ProdutoModule extends Module
 
     public function routeWeb(): void
     {
-//        Route::resource('/produto', ProdutoController::class);
-//        Route::resource('/produto/categoria', CategoriaController::class)->parameter('categoria', 'categoria');
+        Route::resource('/produto', ProdutoController::class);
+        Route::resource('/categoria', CategoriaController::class);
     }
 
     public function routeApi(): void

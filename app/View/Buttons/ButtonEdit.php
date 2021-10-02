@@ -14,7 +14,7 @@ class ButtonEdit extends Button
      */
     public function __construct(string $permission, string $url, ?array $classes = [], ?array $attributes = [])
     {
-        parent::__construct($permission, $url, 'fa fa-edit', Button::METHOD_GET, "Editar", $classes ?? [], $attributes ?? []);
+        parent::__construct($permission, $url, 'edit', Button::METHOD_GET, "Editar", $classes ?? [], $attributes ?? []);
     }
 
     /**

@@ -1,8 +1,7 @@
 <?php
-namespace App\Modules\Admin;
+namespace App\Modules;
 
 use App\Http\Controllers\Web\Home\HomeController;
-use App\Modules\Module;
 use Illuminate\Support\Facades\Route;
 
 class HomeModule extends Module
@@ -20,6 +19,6 @@ class HomeModule extends Module
 
     public function routeWeb(): void
     {
-        Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::get('/home', [HomeController::class, 'index'])->name('home');
     }
 }
