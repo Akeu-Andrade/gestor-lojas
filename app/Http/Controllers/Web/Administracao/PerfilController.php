@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Web\Seguranca;
+namespace App\Http\Controllers\Web\Administracao;
 
 use App\Business\Seguranca\Models\Perfil;
 use App\Business\Seguranca\Repository\PerfilRepositoryInterface;
@@ -26,7 +26,7 @@ class PerfilController extends BaseController
         parent::__construct($perfilRepository);
 
         $this->setPages(10);
-        $this->setFolderView("seguranca.perfil");
+        $this->setFolderView("administracao.perfil");
         $this->setName("Perfil");
         $this->setUrl("administracao/perfil");
     }

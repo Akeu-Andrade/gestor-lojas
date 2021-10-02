@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Web\Produto;
 use App\Business\Produto\Models\Categoria;
 use App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface;
 use App\Http\Controllers\BaseController;
+use Exception;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\View\View;
+use Throwable;
 
 class CategoriaController extends BaseController
 {
@@ -30,7 +34,7 @@ class CategoriaController extends BaseController
      *
      * @param Request $request
      * @return Application
-     * @throws \Exception
+     * @throws Exception
      */
     public function index(Request $request)
     {
@@ -47,7 +51,7 @@ class CategoriaController extends BaseController
      *
      * @param Request $request
      * @return RedirectResponse
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function store(Request $request)
     {
@@ -58,7 +62,7 @@ class CategoriaController extends BaseController
      * Método para exibi o formulário de edição de uma categoria
      *
      * @param Categoria $categoria
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(Categoria $categoria)
     {
@@ -69,7 +73,7 @@ class CategoriaController extends BaseController
      * @param Request $request
      * @param Categoria $categoria
      * @return RedirectResponse
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function update(Request $request, Categoria $categoria): RedirectResponse
     {
@@ -80,7 +84,7 @@ class CategoriaController extends BaseController
      * @param Request $request
      * @param Categoria $categoria
      * @return RedirectResponse
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function destroy(Request $request, Categoria $categoria)
     {

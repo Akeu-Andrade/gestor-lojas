@@ -58,7 +58,7 @@ class ProdutoController extends BaseController
     }
 
     /**
-     * Método para exibi o formulário de edição de um veiculo
+     * Método para exibi o formulário de edição de um produto
      *
      * @param Produto $produto
      * @return Factory|View
@@ -77,6 +77,14 @@ class ProdutoController extends BaseController
     public function update(Request $request, Produto $produto): RedirectResponse
     {
         return parent::updateBase($request, $produto);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function show(Request $request)
+    {
+        return parent::indexBase($request);
     }
 
     /**

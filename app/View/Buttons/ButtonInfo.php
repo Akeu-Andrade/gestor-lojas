@@ -24,7 +24,7 @@ class ButtonInfo extends Button
     {
         $this->model = $model;
 
-        parent::__construct($permission, "#", "fa fa-info", Button::METHOD_GET, $this->getTitle(), ["btn-info"], $attributes = []);
+        parent::__construct($permission, "#", "info", Button::METHOD_GET, $this->getTitle(), ["btn-info"], $attributes = []);
     }
 
     /**

@@ -11,6 +11,9 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -160,6 +163,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -197,6 +202,9 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -346,6 +354,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -383,6 +393,9 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -532,6 +545,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -569,6 +584,9 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -718,6 +736,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -755,6 +775,9 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -904,6 +927,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -941,6 +966,9 @@ namespace PHPSTORM_META {
         ]));
     override(\App::get(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -1090,6 +1118,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -1127,6 +1157,9 @@ namespace PHPSTORM_META {
         ]));
     override(\App::make(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -1276,6 +1309,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -1313,6 +1348,9 @@ namespace PHPSTORM_META {
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -1462,6 +1500,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -1499,6 +1539,9 @@ namespace PHPSTORM_META {
         ]));
     override(\app(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -1648,6 +1691,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -1685,6 +1730,9 @@ namespace PHPSTORM_META {
         ]));
     override(\resolve(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -1834,6 +1882,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -1871,6 +1921,9 @@ namespace PHPSTORM_META {
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
+            'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
+            'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
+            'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'Facade\FlareClient\Flare' => \Facade\FlareClient\Flare::class,
             'Facade\IgnitionContracts\SolutionProviderRepository' => \Facade\Ignition\SolutionProviders\SolutionProviderRepository::class,
@@ -2020,6 +2073,8 @@ namespace PHPSTORM_META {
             'db.connection' => \Illuminate\Database\MySqlConnection::class,
             'db.factory' => \Illuminate\Database\Connectors\ConnectionFactory::class,
             'db.transactions' => \Illuminate\Database\DatabaseTransactionsManager::class,
+            'dompdf' => \Dompdf\Dompdf::class,
+            'dompdf.wrapper' => \Barryvdh\DomPDF\PDF::class,
             'encrypter' => \Illuminate\Encryption\Encrypter::class,
             'events' => \Illuminate\Events\Dispatcher::class,
             'files' => \Illuminate\Filesystem\Filesystem::class,
@@ -2056,6 +2111,10 @@ namespace PHPSTORM_META {
             'view.finder' => \Illuminate\View\FileViewFinder::class,
         ]));
 
+    override(\factory(0), map([
+        '' => '@FactoryBuilder',
+            'App\Business\Seguranca\Models\Perfil' => \App\Business\Seguranca\Models\PerfilFactoryBuilder::class,
+        ]));
 
     override(\Illuminate\Support\Arr::add(0), type(0));
     override(\Illuminate\Support\Arr::except(0), type(0));

@@ -11,17 +11,21 @@ class HomeLink extends LinkMenu
 
     public function getIcon(): String
     {
-        return "fas fa-tag";
+        return "dashboard";
     }
 
     public function getPermission(): String
     {
-        return true;
-           // "homecontroller@index";
+        return "homecontroller@index";
     }
 
     public function getLink(): String
     {
         return route('home');
+    }
+
+    public function getComponete(): string
+    {
+        return 'home';
     }
 }

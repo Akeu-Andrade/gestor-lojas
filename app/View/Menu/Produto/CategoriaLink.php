@@ -28,6 +28,6 @@ class CategoriaLink extends LinkMenu
 
     public function getLink(): String
     {
-        return route('categoria');
+        return route('categoria.index');
     }
 }

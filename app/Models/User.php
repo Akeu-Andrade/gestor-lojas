@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Business\Auth\Models\UserSyncHistory;
 use App\Business\Produto\Models\CompraUsuario;
 use App\Business\Produto\Models\Produto;
 use App\Business\Seguranca\Models\Perfil;
+use App\Modules\Actions\GroupAction;
+use App\Modules\Module;
 use Database\Factories\UserFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
@@ -136,5 +139,74 @@ class User extends Authenticatable
     public function perfil(): BelongsTo
     {
         return $this->belongsTo(Perfil::class);
+    }
+
+    /**
+     * Método para pegar todas a ações registradas
+     *
+     * @return array
+     */
+    public function getTodasAcoes(): array
+    {
+        $modules = config('modules');
+
+        $todasAcoes = [];
+        /**
+         * @var Module $module
+         */
+        foreach ($modules as $module) {
+            $module = new $module();
+            if ($module->groupActions() == null) {
+                continue;
+            }
+
+            /**
+             * @var GroupAction $groupAction
+             */
+            foreach ($module->groupActions() as $groupAction) {
+                $todasAcoes = array_merge($todasAcoes, $groupAction->getArrayActions());
+            }
+        }
+
+        return $todasAcoes;
+    }
+
+    /**
+     * Método para verificar se o usuário tem permissão na web
+     *
+     * @param string $permission
+     * @return bool
+     */
+    public function hasPermission(string $permission): bool{
+        $permission = explode('\\', $permission);
+        $permission = strtolower(end($permission));
+
+        $todasAcoes = $this->getTodasAcoes();
+
+        if (!in_array($permission, $todasAcoes)) {
+            return true;
+        }
+
+        if (!$this->perfil->hasAction($permission)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Método para verificar se o usuário tem permissão para um relatório
+     *
+     * @param string $permission
+     * @return bool
+     */
+    public function hasAccessToReport(string $permission): bool{
+        $permission = strtolower($permission);
+
+        if (!in_array($permission, $this->perfil->getAllowedReports())) {
+            return false;
+        }
+
+        return true;
     }
 }

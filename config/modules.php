@@ -1,10 +1,11 @@
 <?php
 
-use App\Modules\Admin\HomeModule;
-use App\Modules\Admin\ProdutoModule;
+use App\Modules\AdministracaoModule;
+use App\Modules\HomeModule;
+use App\Modules\ProdutoModule;
 
 return [
     HomeModule::class,
-//    AdministracaoModule::class,
     ProdutoModule::class,
+    AdministracaoModule::class,
 ];

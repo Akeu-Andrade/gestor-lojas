@@ -12,7 +12,7 @@ class ButtonNew extends Button
      */
     public function __construct(string $permission, string $url, ?array $classes = [], ?array $attributes = [])
     {
-        parent::__construct($permission, $url, "icofont-plus", Button::METHOD_GET, "Novo", $classes ?? [], $attributes = []);
+        parent::__construct($permission, $url, "add", Button::METHOD_GET, "Novo", ['btn-success'], $attributes = []);
     }
 
     /**

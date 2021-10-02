@@ -18,12 +18,12 @@ class PerfilLink extends LinkMenu
 
     public function getIcon(): string
     {
-        return "fas fa-unlock-alt";
+        return "people";
     }
 
     public function getLink(): string
     {
-        return route('perfil');
+        return route('perfil.index');
     }
 
     public function getPermission(): string

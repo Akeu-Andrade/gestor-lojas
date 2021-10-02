@@ -1,15 +1,14 @@
 <?php
 
 
-namespace App\Modules\Admin;
+namespace App\Modules;
 
 use App\Business\Seguranca\Repository\PerfilRepository;
 use App\Business\Seguranca\Repository\PerfilRepositoryInterface;
-use App\Http\Controllers\Web\Seguranca\PerfilController;
+use App\Http\Controllers\Web\Administracao\PerfilController;
 use App\Modules\Actions\Action;
 use App\Modules\Actions\GroupAction;
 use App\Modules\Actions\GroupActionResource;
-use App\Modules\Module;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +24,7 @@ class AdministracaoModule extends Module
 
     public function getIcon(): string
     {
-        return "fa fa-gear";
+        return "🤵‍♂";
     }
 
     public function boot(Application $app)
@@ -40,9 +39,7 @@ class AdministracaoModule extends Module
 
     public function routeWeb(): void
     {
-        Route::prefix('administracao')->group(function () {
-            Route::resource('perfil', PerfilController::class);
-        });
+        Route::resource('perfil', PerfilController::class);
     }
 
     /**
@@ -53,10 +50,10 @@ class AdministracaoModule extends Module
         $groups = new Collection();
         $groups->add(new GroupActionResource("Perfil", PerfilController::class));
 
-        $relatorioGroup = new GroupAction("Relatório configuração");
-        $relatorioGroup->addAction(new Action('Visualizar', 'relatoriocontroller@index'));
+        $logAcessoGroup = new GroupAction("Log Acesso");
+        $logAcessoGroup->addAction(new Action('Visualizar', 'logacessocontroller@index'));
 
-        $groups->add($relatorioGroup);
+        $groups->add($logAcessoGroup);
 
         return $groups;
     }

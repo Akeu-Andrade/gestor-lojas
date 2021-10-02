@@ -23,9 +23,9 @@
           </a>
         </li>
         <li class="nav-item ">
-          <a href="{{ route('profile.edit') }}" class="nav-link">
-            <i class="material-icons">face</i> {{ __('Profile') }}
-          </a>
+{{--          <a href="{{ route('profile.edit') }}" class="nav-link">--}}
+{{--            <i class="material-icons">face</i> {{ __('Profile') }}--}}
+{{--          </a>--}}
         </li>
       </ul>
     </div>

@@ -11,7 +11,7 @@ class ButtonDelete extends Button
      */
     public function __construct(string $permission, string $url, bool $withAjax)
     {
-        parent::__construct($permission, $url, 'fas fa-trash', $withAjax ? Button::METHOD_DELETE_WITH_AJAX : Button::METHOD_DELETE, "Excluir");
+        parent::__construct($permission, $url, 'delete', $withAjax ? Button::METHOD_DELETE_WITH_AJAX : Button::METHOD_DELETE, "Excluir");
         $this->setMensagemConfirmation("Deseja realmente excluir?");
     }
 
