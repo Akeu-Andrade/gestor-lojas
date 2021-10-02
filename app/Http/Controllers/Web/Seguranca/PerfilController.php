@@ -26,9 +26,9 @@ class PerfilController extends BaseController
         parent::__construct($perfilRepository);
 
         $this->setPages(10);
-        $this->setFolderView("admin.seguranca.perfil");
+        $this->setFolderView("seguranca.perfil");
         $this->setName("Perfil");
-        $this->setUrl("admin/administracao/perfil");
+        $this->setUrl("administracao/perfil");
     }
 
 

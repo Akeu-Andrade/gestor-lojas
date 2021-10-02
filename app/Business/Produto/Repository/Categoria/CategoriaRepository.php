@@ -1,18 +1,18 @@
 <?php
-namespace App\Business\Produto\Repository\CategoriaProduto;
+namespace App\Business\Produto\Repository\Categoria;
 
-use App\Business\Produto\Models\CategoriaProduto;
+use App\Business\Produto\Models\Categoria;
 use App\Business\Repository;
 use Illuminate\Http\Request;
 
-class CategoriaProdutoRepository extends Repository implements CategoriaProdutoRepositoryInterface
+class CategoriaRepository extends Repository implements CategoriaRepositoryInterface
 {
     /**
      * CategoriaRepository constructor.
      */
     public function __construct()
     {
-        $this->model = new CategoriaProduto();
+        $this->model = new Categoria();
     }
 
     /**

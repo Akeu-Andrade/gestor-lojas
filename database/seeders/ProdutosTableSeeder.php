@@ -18,7 +18,7 @@ class ProdutosTableSeeder extends Seeder
             'descricao' => 'gostoso',
             'valor_uni' => 10,
             'quantidade_estoque' => 200,
-            'categoria_produto_id' => 1,
+            'categoria_id' => 1,
             'status_produto' => 1,
             'valor_entrega' => 2,
             'created_at' => now(),

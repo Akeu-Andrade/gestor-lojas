@@ -9,6 +9,7 @@ interface ItemMenu
 {
     public function getName(): String;
     public function getIcon(): String;
+    public function getComponete(): String;
     public function hasSubMenu(): Bool;
     /**
      * Retorna uma lista de menu

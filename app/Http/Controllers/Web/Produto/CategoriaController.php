@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers\Web\Produto;
 
-use App\Business\Produto\Models\CategoriaProduto;
-use App\Business\Produto\Repository\CategoriaProduto\CategoriaProdutoRepositoryInterface;
+use App\Business\Produto\Models\Categoria;
+use App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
 
-class CategoriaProdutoController extends BaseController
+class CategoriaController extends BaseController
 {
     /**
-     * CategoriaController constructor.
-     * @param CategoriaProdutoRepositoryInterface $repository
+     * @param CategoriaRepositoryInterface $repository
      */
-    public function __construct(CategoriaProdutoRepositoryInterface $repository)
+    public function __construct(CategoriaRepositoryInterface $repository)
     {
         parent::__construct($repository);
 
         $this->setPages(10);
-        $this->setFolderView("admin.produto.categoria");
+        $this->setFolderView("produto.categoria");
         $this->setName("Categoria do produto");
-        $this->setUrl(route('admin.categoria.index'));
+        $this->setUrl(route('categoria.index'));
         $this->setOrderList(['created_at', 'desc']);
     }
 
@@ -58,33 +57,33 @@ class CategoriaProdutoController extends BaseController
     /**
      * Método para exibi o formulário de edição de uma categoria
      *
-     * @param CategoriaProduto $categoriaProduto
+     * @param Categoria $categoria
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(CategoriaProduto $categoriaProduto)
+    public function edit(Categoria $categoria)
     {
-        return parent::editBase($categoriaProduto);
+        return parent::editBase($categoria);
     }
 
     /**
      * @param Request $request
-     * @param CategoriaProduto $categoriaProduto
+     * @param Categoria $categoria
      * @return RedirectResponse
      * @throws \Throwable
      */
-    public function update(Request $request, CategoriaProduto $categoriaProduto): RedirectResponse
+    public function update(Request $request, Categoria $categoria): RedirectResponse
     {
-        return parent::updateBase($request, $categoriaProduto);
+        return parent::updateBase($request, $categoria);
     }
 
     /**
      * @param Request $request
-     * @param CategoriaProduto $categoriaProduto
+     * @param Categoria $categoria
      * @return RedirectResponse
      * @throws \Throwable
      */
-    public function destroy(Request $request, CategoriaProduto $categoriaProduto)
+    public function destroy(Request $request, Categoria $categoria)
     {
-        return parent::destroyBase($request, $categoriaProduto);
+        return parent::destroyBase($request, $categoria);
     }
 }

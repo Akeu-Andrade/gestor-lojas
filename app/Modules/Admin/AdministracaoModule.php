@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Modules\Admin\Administracao;
+namespace App\Modules\Admin;
 
 use App\Business\Seguranca\Repository\PerfilRepository;
 use App\Business\Seguranca\Repository\PerfilRepositoryInterface;

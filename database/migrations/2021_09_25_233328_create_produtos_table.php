@@ -27,8 +27,8 @@ class CreateProdutosTable extends Migration
             $table->boolean('is_retirar')->nullable();
             $table->double('valor_entrega')->nullable();
 
-            $table->unsignedBigInteger('categoria_produto_id')->nullable();
-            $table->foreign('categoria_produto_id')->references('id')->on('categoria_produtos');
+            $table->unsignedBigInteger('categoria_id')->nullable();
+            $table->foreign('categoria_id')->references('id')->on('categorias');
 
             $table->unsignedBigInteger('user_id_cadastro')->nullable();
             $table->foreign('user_id_cadastro')->references('id')->on('users');

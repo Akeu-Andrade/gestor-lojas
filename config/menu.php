@@ -1,11 +1,13 @@
 <?php
 
-use App\View\Menu\Administracao\AdministracaoHeader;
-use App\View\Menu\Produto\ProdutoHeader;
+use App\View\Menu\HomeLink;
+use App\View\Menu\Produto\CategoriaLink;
 
 return [
     "headers" => [
-        ProdutoHeader::class,
+//        HomeLink::class,
+//        ProdutoHeader::class,
+//          CategoriaLink::class
 //        AdministracaoHeader::class
     ]
 ];
