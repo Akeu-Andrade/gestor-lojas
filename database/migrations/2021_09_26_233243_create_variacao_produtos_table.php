@@ -19,6 +19,8 @@ class CreateVariacaoProdutosTable extends Migration
             $table->string('descricao')->nullable();
             $table->double('qtd_opcao')->nullable();
             $table->string('imagem')->nullable();
+            $table->integer('minimo_item')->nullable();
+            $table->integer('maximo_item')->nullable();
 
             $table->unsignedBigInteger('produto_id')->nullable();
             $table->foreign('produto_id')->references('id')->on('produtos');

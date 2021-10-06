@@ -15,7 +15,6 @@ class CreateItemVariacaoProdutosTable extends Migration
     {
         Schema::create('item_variacao_produtos', function (Blueprint $table) {
             $table->id();
-
             $table->string('nome');
 
             $table->unsignedBigInteger('variacao_produto_id')->nullable();
