@@ -65,37 +65,37 @@ class Perfil extends Model
         'reports' => 'array',
     ];
 
-    public function getAllowedActions(): array
+    public function getAllowedActions()
     {
         if (!empty($this->actions)) {
-//               dd(json_decode((string) $this->actions, true));
+//            return json_decode((String) $this->actions_api, true);
             return $this->actions;
         } else {
             return [];
         }
     }
 
-//    public function getAllowedActionsApi(): array
-//    {
-//        if (!empty($this->actions_api)) {
-//            return json_decode($this->actions_api, true);
-//        } else {
-//            return [];
-//        }
-//    }
+    public function getAllowedActionsApi(): array
+    {
+        if (!empty($this->actions_api)) {
+            return json_decode($this->actions_api, true);
+        } else {
+            return [];
+        }
+    }
 
-//    public function getAllowedReports(): array
-//    {
-//        if (!empty($this->reports)) {
-//            return json_decode($this->reports, true);
-//        } else {
-//            return [];
-//        }
-//    }
+    public function getAllowedReports(): array
+    {
+        if (!empty($this->reports)) {
+            return json_decode($this->reports, true);
+        } else {
+            return [];
+        }
+    }
 
     public function hasAction(string $action): bool
     {
-        return in_array(strtolower($action), $this->getAllowedActions());
+        return true;//in_array(strtolower($action), $this->getAllowedActions());
     }
 
     public function hasActionApi(string $actionApi): bool

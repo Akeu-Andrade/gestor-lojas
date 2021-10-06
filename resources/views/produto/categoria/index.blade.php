@@ -1,14 +1,7 @@
 @extends('layouts.app',
         ['activePage' => 'categoria',
         'titlePage' => __('Categoria'),
-            'config' => [
-                'new' => [
-                    'permission' => 'categoriacontroller@create',
-                    'url' => route('categoria.create'),
-                ],
-                'back' => route('categoria.index'),
-                'filter_action' => route('categoria.index'),
-                ],
+
             ]
         )
 
@@ -29,8 +22,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Categorias</h4>
-                            <p class="card-category"> Um produto só pode ser cadastrado com uma categoria <br> A
-                                descrição não é obrigatoria</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -42,6 +33,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                     <th></th>
                                     </thead>
                                     <tbody>
+                                    <div class="text-right">
+                                        {!! \App\View\Buttons\ButtonNew::make('categoriacontroller@create', route('categoria.create'))->render() !!}
+                                    </div>
                                     <?php
                                     /**
                                      * @var Categoria $categoria
@@ -65,10 +59,30 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
+                            <div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-md-5 col-12">
+                                        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+                                            Mostrando {{ $models->currentPage() }} a {{ $models->count() }}
+                                            de {{ $models->total() }} entradas
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-12">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                            <nav class="bd-example" aria-label="data-example-id">
+                                                <ul class="pagination">
+                                                    <li class="page-item">
+                                                        <a class="btn btn-primary {{empty($models->previousPageUrl())? 'disabled' : ''}}"  href="{{$models->previousPageUrl()}}">Volte</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="btn btn-primary {{empty($models->nextPageUrl()) ? 'disabled' : ''}}" href="{{$models->nextPageUrl()}}">Prox</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,3 +90,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{ asset('js/app.js') }}" defer></script>
+@endpush

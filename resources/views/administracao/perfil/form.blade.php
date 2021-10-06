@@ -1,5 +1,6 @@
 <?php
 
+use App\Business\Relatorio\RelatorioAbstract;
 use App\Business\Seguranca\Models\Perfil;
 use App\Modules\Actions\GroupAction;
 use App\Modules\Module;
@@ -116,42 +117,6 @@ use App\Modules\Module;
                                 </div>
                             </div>
                         @endif
-                        @foreach($module->groupActionsApi() ?? [] as $y => $groupAction)
-                            <div class="x_panel" style="height: auto;">
-                                <div class="x_title">
-                                    <h2><i class="fa fa-android"></i> {{$groupAction->getName()}} <small>Configuração de permissão para o aplicativo</small></h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li>
-                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content" style="display: none;">
-                                    <div class="">
-                                        <ul class="to_do">
-                                            <?php
-                                            /**
-                                             * @var \App\Modules\Actions\Action $action
-                                             */
-                                            ?>
-                                            @foreach($groupAction->getActions() as $action)
-                                                <li>
-                                                    <p>
-                                                        <input
-                                                            name="actions_api[]"
-                                                            id="{{$action->getAction()}}"
-                                                            value="{{$action->getAction()}}" {{!empty($perfil) && $perfil->hasActionApi($action->getAction()) ? "checked" : ""}}
-                                                            type="checkbox"
-                                                            class="flat"> {{$action->getName()}}
-                                                    </p>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
                     </div>
                 @endforeach
             </div>
