@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -262,7 +263,7 @@ class BaseController extends Controller
             return Redirect::back()->withInput($request->all());
         }
 
-        return Redirect::back();
+        return Redirect::to($this->getUrl());
     }
 
     /**
@@ -276,7 +277,11 @@ class BaseController extends Controller
         try {
             DB::beginTransaction();
 
-            $this->getRepository()->delete($model->getRouteKey());
+            $request->request->add([
+                'deleted_at' =>  date('d/m/Y')
+            ]);
+
+            $this->getRepository()->delete($model->  getRouteKey());
 
             $request->session()->flash('message', "{$this->getName()} removido");
             DB::commit();

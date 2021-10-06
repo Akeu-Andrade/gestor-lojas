@@ -2,6 +2,7 @@
 
 namespace App\Business\Produto\Models;
 
+use App\Models\UserLog;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -42,6 +43,7 @@ use Illuminate\Support\Carbon;
 class ItemVariacaoProduto extends Model
 {
     use SoftDeletes;
+    use UserLog;
 
     protected $fillable = [
         'nome',

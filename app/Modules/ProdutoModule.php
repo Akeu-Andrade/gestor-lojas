@@ -44,7 +44,7 @@ class ProdutoModule extends Module
         $group = new Collection();
 
         $group->add(new GroupActionResource('produto', ProdutoController::class));
-        $group->add(new GroupActionResource('Categoria', CategoriaController::class));
+        $group->add(new GroupActionResource('categoria', CategoriaController::class));
 
         return $group;
     }
@@ -52,7 +52,7 @@ class ProdutoModule extends Module
     public function routeWeb(): void
     {
         Route::resource('/produto', ProdutoController::class);
-        Route::resource('/categoria', CategoriaController::class);
+        Route::resource('/categoria', CategoriaController::class)->parameter('categoria','categoria');
     }
 
     public function routeApi(): void

@@ -15,7 +15,9 @@ use Throwable;
 
 class CategoriaController extends BaseController
 {
+
     /**
+     * CategoriaController constructor.
      * @param CategoriaRepositoryInterface $repository
      */
     public function __construct(CategoriaRepositoryInterface $repository)
@@ -80,6 +82,10 @@ class CategoriaController extends BaseController
         return parent::updateBase($request, $categoria);
     }
 
+    public function show(){
+
+    }
+
     /**
      * @param Request $request
      * @param Categoria $categoria
@@ -90,4 +96,5 @@ class CategoriaController extends BaseController
     {
         return parent::destroyBase($request, $categoria);
     }
+
 }
