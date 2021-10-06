@@ -15,11 +15,11 @@ class ProdutoController extends BaseController
 {
     /**
      * ProdutoController constructor.
-     * @param ProdutoRepositoryInterface $produtoRepository
+     * @param ProdutoRepositoryInterface $repository
      */
-    public function __construct(ProdutoRepositoryInterface $produtoRepository)
+    public function __construct(ProdutoRepositoryInterface $repository)
     {
-        parent::__construct($produtoRepository);
+        parent::__construct($repository);
 
         $this->setPages(10);
         $this->setFolderView("produto");
