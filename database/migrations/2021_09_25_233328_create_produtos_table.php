@@ -26,6 +26,7 @@ class CreateProdutosTable extends Migration
             $table->double('desconto_porcento')->nullable();
             $table->boolean('is_retirar')->nullable();
             $table->double('valor_entrega')->nullable();
+            $table->string('tamanho')->nullable();
 
             $table->unsignedBigInteger('categoria_id')->nullable();
             $table->foreign('categoria_id')->references('id')->on('categorias');

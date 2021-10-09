@@ -1,14 +1,19 @@
+@extends('layouts.app',
+        ['activePage' => 'itemvariacaoproduto',
+        'titlePage' => __('Item de variação do produto'),
+
+            ]
+        )
+
 <?php
-use App\Business\Seguranca\Models\Perfil;
+/**
+ * @var LengthAwarePaginator $models
+ */
+
+use App\Business\Produto\Models\ItemVariacaoProduto;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-/**
- * @var LengthAwarePaginator $perfis
- */
 ?>
-
-@extends('layouts.app', ['titlePage' => __('Perfils')])
-
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -16,38 +21,36 @@ use Illuminate\Pagination\LengthAwarePaginator;
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Perfils</h4>
+                            <h4 class="card-title ">Item de variação do produto</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <div class="table-responsive">
                                 <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nome</th>
-                                        <th>Observação</th>
-                                        <th width="50"></th>
-                                    </tr>
+                                    <thead class=" text-primary">
+                                    <th>#</th>
+                                    <th>Nome</th>
+                                    <th></th>
                                     </thead>
                                     <tbody>
-                                        <div class="text-right">
-{{--                                            {!! \App\View\Buttons\ButtonNew::make('perfilcontroller@create', route('perfil.create'))->render() !!}--}}
-                                        </div>
+                                    <div class="text-right">
+                                        {!! \App\View\Buttons\ButtonNew::make('itemvariacaoprodutocontroller@create', route('itemvariacaoproduto.create'))->render() !!}
+                                    </div>
                                     <?php
                                     /**
-                                     * @var Perfil $perfil
+                                     * @var ItemVariacaoProduto $itemvariacaoproduto
                                      */
                                     ?>
-                                    @foreach($perfis as $perfil)
+                                    @foreach($models as $itemvariacaoproduto)
                                         <tr>
-                                            <td>{{ $perfil->id }}</td>
-                                            <td>{{ $perfil->nome }}</td>
-                                            <td>{{ $perfil->observacao }}</td>
+                                            <td>{{$itemvariacaoproduto->id}}</td>
+                                            <td>{{$itemvariacaoproduto->nome}}</td>
+                                            <td>
                                             <td class="text-right">
                                                 <div class="btn-group">
-{{--                                                    {!! \App\View\Buttons\ButtonInfo::make($perfil, '')->render() !!}--}}
-{{--                                                    {!! \App\View\Buttons\ButtonEdit::make('perfilcontroller@edit', route('perfil.edit', $perfil->id))->render() !!}--}}
-{{--                                                    {!! \App\View\Buttons\ButtonDelete::make('perfilcontroller@destroy', route('perfil.destroy', $perfil->id))->render() !!}--}}
+                                                    {!! \App\View\Buttons\ButtonInfo::make($itemvariacaoproduto)->render() !!}
+                                                    {!! \App\View\Buttons\ButtonEdit::make('itemvariacaoprodutocontroller@edit', route('itemvariacaoproduto.edit', $itemvariacaoproduto->id))->render() !!}
+                                                    {!! \App\View\Buttons\ButtonDelete::make('itemvariacaoprodutocontroller@destroy', route('itemvariacaoproduto.destroy', $itemvariacaoproduto->id))->render() !!}
                                                 </div>
                                             </td>
                                         </tr>
@@ -59,8 +62,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-5 col-12">
                                         <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
-                                            Mostrando {{ $perfis->currentPage() }} a {{ $perfis->count() }}
-                                            de {{ $perfis->total() }} entradas
+                                            Mostrando {{ $models->currentPage() }} a {{ $models->count() }}
+                                            de {{ $models->total() }} entradas
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-12">
@@ -68,10 +71,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                             <nav class="bd-example" aria-label="data-example-id">
                                                 <ul class="pagination">
                                                     <li class="page-item">
-                                                        <a class="btn btn-primary {{empty($perfis->previousPageUrl())? 'disabled' : ''}}"  href="{{$perfis->previousPageUrl()}}">Volte</a>
+                                                        <a class="btn btn-primary {{empty($models->previousPageUrl())? 'disabled' : ''}}"  href="{{$models->previousPageUrl()}}">Volte</a>
                                                     </li>
                                                     <li class="page-item">
-                                                        <a class="btn btn-primary {{empty($perfis->nextPageUrl()) ? 'disabled' : ''}}" href="{{$perfis->nextPageUrl()}}">Prox</a>
+                                                        <a class="btn btn-primary {{empty($models->nextPageUrl()) ? 'disabled' : ''}}" href="{{$models->nextPageUrl()}}">Prox</a>
                                                     </li>
                                                 </ul>
                                             </nav>
@@ -86,4 +89,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
         </div>
     </div>
 @endsection
-
+@push('js')
+    <script src="{{ asset('js/app.js') }}" defer></script>
+@endpush

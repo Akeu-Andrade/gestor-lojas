@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemVariacaoProdutosTable extends Migration
+class CreateComprasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateItemVariacaoProdutosTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_variacao_produtos', function (Blueprint $table) {
+        Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->integer('status_compra')->default(1); //Enum
+            $table->integer('forma_pagamento')->default(1); //Enum
+            $table->double('quantidade')->nullable();
 
-            $table->unsignedBigInteger('variacao_produto_id')->nullable();
-            $table->foreign('variacao_produto_id')->references('id')->on('variacao_produtos');
+            $table->unsignedBigInteger('produto_id')->nullable();
+            $table->foreign('produto_id')->references('id')->on('produtos');
+
+            $table->unsignedBigInteger('user_comprador_id')->nullable();
+            $table->foreign('user_comprador_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('user_id_cadastro')->nullable();
             $table->foreign('user_id_cadastro')->references('id')->on('users');
@@ -38,6 +43,6 @@ class CreateItemVariacaoProdutosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_variacao_produtos');
+        Schema::dropIfExists('compras');
     }
 }
