@@ -27,6 +27,6 @@ class PerfilsTableSeeder extends Seeder
                 ]),
         ]);
 
-        factory(Perfil::class, 50)->create();
+//        factory(Perfil::class, 50)->create();
     }
 }

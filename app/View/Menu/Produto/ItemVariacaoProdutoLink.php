@@ -4,30 +4,30 @@ namespace App\View\Menu\Produto;
 
 use App\View\Menu\LinkMenu;
 
-class ProdutoLink extends LinkMenu
+class ItemVariacaoProdutoLink extends LinkMenu
 {
     public function getName(): String
     {
-        return "Produto";
+        return "Item de variação";
     }
 
     public function getComponete(): String
     {
-        return 'produto';
+        return 'itemvariacaoproduto';
     }
 
     public function getIcon(): String
     {
-        return 'store';
+        return 'rule';
     }
 
     public function getPermission(): String
     {
-        return "produtocontroller@index";
+        return "itemvariacaoprodutocontroller@index";
     }
 
     public function getLink(): String
     {
-        return route('produto.index');
+        return route('itemvariacaoproduto.index');
     }
 }
