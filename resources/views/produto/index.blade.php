@@ -69,7 +69,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                                 @endif
                                             </td>
                                             <td>{{$produto->desconto_porcento}} {{empty($produto->desconto_porcento)? ' ' : ' %'}}</td>
-                                            <td>  </td>
+                                            <td> {{$produto->categoria->name}} </td>
                                             <td>{{$produto->valor_entrega}}</td>
                                             <td>{{$produto->valor_uni}}</td>
                                             <td class="text-right">

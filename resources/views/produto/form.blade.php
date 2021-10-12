@@ -51,9 +51,9 @@ use App\Business\Produto\Models\Produto;
         <label for="categoria_id" id="esc">Categoria</label>
         <div id="categoria_id" name="categoria_id">
             {{ Form::select('categoria_id', \App\Business\Produto\Models\Categoria::select(['name', 'id'])->get()->pluck('name', 'id'),
-                            !empty($model->categoria_id) ? $model->categoria_id : old('categoria_id'),
-                            ['class' => 'form-control input_required cliqC', 'id' => 'categoria_id',
-                            'placeholder' => 'Selecione uma opção']) }}
+                !empty($model->categoria_id) ? $model->categoria_id : old('categoria_id'),
+                ['class' => 'form-control', 'id' => 'categoria_id', 'required' => 'required',
+                'placeholder' => 'Selecione uma opção']) }}
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@ use App\Business\Produto\Models\Produto;
 <div class="form-row" style="padding-bottom: 20px">
     <div class="col">
         <label for="valor_uni">Valor<span style="font-size: 11px"> &nbsp;&nbsp;(Valor do produto) </span></label>
-        <input type="number" class="form-control" id="valor_uni" name="valor_uni"
+        <input type="number" class="form-control" id="valor_uni" name="valor_uni" required
                value="{{$model->valor_uni ?? old('valor_uni')}}">
     </div>
     <div class="col">
@@ -74,7 +74,7 @@ use App\Business\Produto\Models\Produto;
 <div class="col">
     <label for="imagem">Imagem <span style="font-size: 11px"> &nbsp;&nbsp;(Sem a foto o produto não é exibido) </span></label>
     <div class="input-group mb-3">
-        <input type="file" class="form-control" name="imagem">
+        <input type="file" class="form-control" {{empty($model)? 'required' : ''}} name="imagem">
     </div>
 </div>
 @if(!empty($model))
