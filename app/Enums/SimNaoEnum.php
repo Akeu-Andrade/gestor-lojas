@@ -14,10 +14,10 @@ final class SimNaoEnum extends Enum implements LocalizedEnum
     {
         switch ($status) {
             case SimNaoEnum::Sim:
-                return "bg-green";
+                return "success";
                 break;
             case SimNaoEnum::Nao:
-                return "bg-red";
+                return "danger";
                 break;
             default:
                 return "";

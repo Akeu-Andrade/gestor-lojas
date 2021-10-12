@@ -28,10 +28,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
-                                    <th>#</th>
-                                    <th>Nome</th>
-                                    <th>Descricao</th>
-                                    <th></th>
+                                        <th>#</th>
+                                        <th>Ativo</th>
+                                        <th>Nome</th>
+                                        <th>Descrição</th>
+                                        <th>Tamanho</th>
+                                        <th>Estoque</th>
+                                        <th>Imagem</th>
+                                        <th>Desconto</th>
+                                        <th>Categoria</th>
+                                        <th>Valor Entrega</th>
+                                        <th>Valor</th>
+                                        <th></th>
                                     </thead>
                                     <tbody>
                                     <div class="text-right">
@@ -45,9 +53,25 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                     @foreach($models as $produto)
                                         <tr>
                                             <td>{{$produto->id}}</td>
-                                            <td>{{$produto->nome}}</td>
-                                            <td>{{$produto->descricao}}</td>
                                             <td>
+                                                <span class="badge badge-{{\App\Enums\SimNaoEnum::getClasseBadge($produto->status_produto)}}">
+                                                    {{\App\Enums\SimNaoEnum::getDescription($produto->status_produto)}}
+                                                </span>
+                                            </td>
+                                            <td>{{substr($produto->nome, 0, 10)}}</td>
+                                            <td>{{substr($produto->descricao, 0, 10)}}</td>
+                                            <td>{{$produto->tamanho}}</td>
+                                            <td>{{$produto->quantidade}}</td>
+                                            <td>
+                                                @if (!empty($produto->getCaminhoImagem()))
+                                                    <img src="{{$produto->getCaminhoImagem()}}"
+                                                         class="card-img-top" alt="Imagem do produto">
+                                                @endif
+                                            </td>
+                                            <td>{{$produto->desconto_porcento}} {{empty($produto->desconto_porcento)? ' ' : ' %'}}</td>
+                                            <td>  </td>
+                                            <td>{{$produto->valor_entrega}}</td>
+                                            <td>{{$produto->valor_uni}}</td>
                                             <td class="text-right">
                                                 <div class="btn-group">
                                                     {!! \App\View\Buttons\ButtonInfo::make($produto)->render() !!}

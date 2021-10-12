@@ -19,6 +19,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property string $nome
  * @property string|null $descricao
+ * @property string|null $tamanho
  * @property int|null $quantidade
  * @property float|null $valor_uni
  * @property string|null $imagem
@@ -35,11 +36,9 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Categoria|null $categoria
- * @property-read Collection|CompraUsuario[] $compraUsuario
+ * @property-read Collection|Compra[] $compra
  * @property-read int|null $compra_usuario_count
  * @property-read User $usuarioCadastro
- * @property-read Collection|VariacaoProduto[] $variacaoProduto
- * @property-read int|null $variacao_produto_count
  * @method static Builder|Produto newModelQuery()
  * @method static Builder|Produto newQuery()
  * @method static \Illuminate\Database\Query\Builder|Produto onlyTrashed()
@@ -73,7 +72,7 @@ class Produto extends Model
     use SoftDeletes;
     use UserLog;
 
-
+    CONST DIR_FOTO = "produto/imagem/";
     protected $fillable = [
         'nome',
         'descricao',
@@ -83,6 +82,7 @@ class Produto extends Model
         'imagem',
         'quantidade_estoque',
         'observacao',
+        'tamanho',
         'categoria_id',
         'status_produto',
         'desconto_porcento',
@@ -93,20 +93,20 @@ class Produto extends Model
         'updated_at',
     ];
 
+    public function getCaminhoImagem()
+    {
+        if (empty($this->imagem)) {
+            return "";
+        }
+        return asset("storage/".self::DIR_FOTO.$this->imagem);
+    }
+
     /**
      * @return mixed
      */
     public function usuarioCadastro()
     {
         return $this->belongsTo(User::class, 'user_cadastro_id')->withTrashed();
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function variacaoProduto(): HasMany
-    {
-        return $this->hasMany(VariacaoProduto::class);
     }
 
     /**
@@ -120,9 +120,9 @@ class Produto extends Model
     /**
      * @return HasMany
      */
-    public function compraUsuario(): HasMany
+    public function compra(): HasMany
     {
-        return $this->hasMany(CompraUsuario::class);
+        return $this->hasMany(Compra::class);
     }
 
     public function scopeWhereCreatedAtAte(Builder $query, string $data)

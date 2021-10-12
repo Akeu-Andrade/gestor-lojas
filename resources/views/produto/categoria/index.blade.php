@@ -46,7 +46,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                             <td>{{$categoria->id}}</td>
                                             <td>{{$categoria->name}}</td>
                                             <td>{{$categoria->descricao}}</td>
-                                            <td>
                                             <td class="text-right">
                                                 <div class="btn-group">
                                                     {!! \App\View\Buttons\ButtonInfo::make($categoria)->render() !!}
