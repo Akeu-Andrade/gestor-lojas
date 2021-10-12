@@ -31,6 +31,7 @@ Route::middleware(['middleware' => 'auth'])->group(function() {
 
         $objModule->routeWeb();
     }
+    //Rodas do templete
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
