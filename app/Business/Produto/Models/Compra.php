@@ -15,7 +15,7 @@ use Illuminate\Support\Carbon;
  * App\Business\Produto\Models\CompraUsuario
  *
  * @property int $id
- * @property int $status_compra_usuario
+ * @property int $status_compra
  * @property int $forma_pagamento
  * @property float|null $quantidade
  * @property int|null $produto_id
@@ -25,30 +25,30 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $deleted_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
- * @property-read \App\Business\Produto\Models\Produto|null $produto
+ * @property-read Produto|null $produto
  * @property-read User|null $usuarioComprador
- * @method static Builder|CompraUsuario newModelQuery()
- * @method static Builder|CompraUsuario newQuery()
- * @method static \Illuminate\Database\Query\Builder|CompraUsuario onlyTrashed()
- * @method static Builder|CompraUsuario query()
- * @method static Builder|CompraUsuario whereCreatedAt($value)
- * @method static Builder|CompraUsuario whereCreatedAtAte(string $data)
- * @method static Builder|CompraUsuario whereCreatedAtDe(string $data)
- * @method static Builder|CompraUsuario whereDeletedAt($value)
- * @method static Builder|CompraUsuario whereFormaPagamento($value)
- * @method static Builder|CompraUsuario whereId($value)
- * @method static Builder|CompraUsuario whereProdutoId($value)
- * @method static Builder|CompraUsuario whereQuantidade($value)
- * @method static Builder|CompraUsuario whereStatusCompraUsuario($value)
- * @method static Builder|CompraUsuario whereUpdatedAt($value)
- * @method static Builder|CompraUsuario whereUserCompradorId($value)
- * @method static Builder|CompraUsuario whereUserIdAlteracao($value)
- * @method static Builder|CompraUsuario whereUserIdCadastro($value)
- * @method static \Illuminate\Database\Query\Builder|CompraUsuario withTrashed()
- * @method static \Illuminate\Database\Query\Builder|CompraUsuario withoutTrashed()
+ * @method static Builder|Compra newModelQuery()
+ * @method static Builder|Compra newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Compra onlyTrashed()
+ * @method static Builder|Compra query()
+ * @method static Builder|Compra whereCreatedAt($value)
+ * @method static Builder|Compra whereCreatedAtAte(string $data)
+ * @method static Builder|Compra whereCreatedAtDe(string $data)
+ * @method static Builder|Compra whereDeletedAt($value)
+ * @method static Builder|Compra whereFormaPagamento($value)
+ * @method static Builder|Compra whereId($value)
+ * @method static Builder|Compra whereProdutoId($value)
+ * @method static Builder|Compra whereQuantidade($value)
+ * @method static Builder|Compra whereStatusCompra($value)
+ * @method static Builder|Compra whereUpdatedAt($value)
+ * @method static Builder|Compra whereUserCompradorId($value)
+ * @method static Builder|Compra whereUserIdAlteracao($value)
+ * @method static Builder|Compra whereUserIdCadastro($value)
+ * @method static \Illuminate\Database\Query\Builder|Compra withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Compra withoutTrashed()
  * @mixin Eloquent
  */
-class CompraUsuario extends Model
+class Compra extends Model
 {
     use SoftDeletes;
     use UserLog;
@@ -57,7 +57,8 @@ class CompraUsuario extends Model
         'produto_id',
         'user_comprador_id',
         'quantidade',
-        'status_compra_usuario',
+        'observacao',
+        'status_compra',
         'forma_pagamento',
         'deleted_at',
         'created_at',

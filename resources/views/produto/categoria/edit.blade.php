@@ -21,7 +21,7 @@ use App\Business\Produto\Models\Categoria;
                     <form method="post"  action="{{ route('categoria.update', $model->id) }}">
                         @csrf
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="padding: 30px">
                                 @method('PATCH')
                                 @include('produto.categoria.form')
                                 <button type="submit" class="btn btn-sm btn-primary">Atualizar</button>

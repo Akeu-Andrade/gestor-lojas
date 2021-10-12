@@ -5,6 +5,8 @@ namespace App\Business\Produto\Repository\Produto;
 use App\Business\Produto\Models\Produto;
 use App\Business\Repository;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Ramsey\Uuid\Uuid;
 
 class ProdutoRepository extends Repository implements ProdutoRepositoryInterface
 {
@@ -27,6 +29,7 @@ class ProdutoRepository extends Repository implements ProdutoRepositoryInterface
          * @var Produto $produto
          */
         $produto = $this->create($request->request->all());
+        $this->saveImagem($request->imagem, $produto);
 
         return $produto;
     }
@@ -38,6 +41,27 @@ class ProdutoRepository extends Repository implements ProdutoRepositoryInterface
      */
     public function replace(int $id, Request $request)
     {
-        $this->update($id, $request->all());
+        /**
+         * @var Produto $produto
+         */
+
+        $produto = $this->update($id, $request->all());
+        if (!empty($request->imagem)) {
+            $this->saveImagem($request->imagem, $produto);
+        }
+
     }
+
+    /**
+     * @param UploadedFile $foto
+     * @param Produto $produto
+     */
+    public function saveImagem(UploadedFile $foto, Produto $produto): void
+    {
+        $name = Uuid::uuid4() . '.jpeg';
+        \Storage::disk("public")->putFileAs(Produto::DIR_FOTO, $foto, $name);
+        $produto->imagem = $name;
+        $produto->touch();
+    }
+
 }

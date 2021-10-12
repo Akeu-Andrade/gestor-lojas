@@ -1,5 +1,6 @@
 <?php
 
+use App\Business\Produto\Enums\StatusCompraEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,9 +16,11 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->integer('status_compra')->default(1); //Enum
-            $table->integer('forma_pagamento')->default(1); //Enum
+            $table->tinyInteger('status_compra')->default(StatusCompraEnum::CARRINHO); //Enum
+            $table->tinyInteger('forma_pagamento')->default(1); //Enum
             $table->double('quantidade')->nullable();
+            $table->string('observacao')->nullable();
+            $table->tinyInteger('is_retirar')->nullable();
 
             $table->unsignedBigInteger('produto_id')->nullable();
             $table->foreign('produto_id')->references('id')->on('produtos');

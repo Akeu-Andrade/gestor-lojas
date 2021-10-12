@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="container-fluid">
                 <div class="card card-plain">
-                    <form method="post" action="{{ route('produto.store') }}">
+                    <form method="post" action="{{ route('produto.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card-body" style="padding: 30px">

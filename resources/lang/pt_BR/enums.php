@@ -1,8 +1,12 @@
 <?php
 
+use App\Business\Produto\Enums\StatusCompraEnum;
+
 return [
-//    StatusOrdemServicoEnum::class => [
-//        StatusOrdemServicoEnum::ABERTO => "Aberto",
-//        StatusOrdemServicoEnum::ENCERRADO_APP => "Encerrado",
-//    ],
+    StatusCompraEnum::class => [
+        StatusCompraEnum::CARRINHO => "Carrinho",
+        StatusCompraEnum::COMPRADO => "Comprado",
+        StatusCompraEnum::PREPARACAO => "Em preparação",
+        StatusCompraEnum::CANCELADO => "Cancelado"
+    ],
 ];

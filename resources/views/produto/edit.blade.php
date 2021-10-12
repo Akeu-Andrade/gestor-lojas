@@ -18,10 +18,10 @@ use App\Business\Produto\Models\Produto;
         <div class="container-fluid">
             <div class="container-fluid">
                 <div class="card card-plain">
-                    <form method="post"  action="{{ route('produto.update', $model->id) }}">
+                    <form method="post"  action="{{ route('produto.update', $model->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="padding: 30px">
                                 @method('PATCH')
                                 @include('produto.form')
                                 <button type="submit" class="btn btn-sm btn-primary">Atualizar</button>
@@ -33,20 +33,4 @@ use App\Business\Produto\Models\Produto;
         </div>
     </div>
 @endsection
-@section('script')
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            $("#status").change(verificarTemAcesso);
-            verificarTemAcesso();
 
-            function verificarTemAcesso()
-            {
-                $("#esc").hide();
-                $("#esc").find(".input_required").prop("required", false).prop("disabled", true).val("");
-
-                $("#status").hide();
-                $("#status").find(".input_required").prop("required", false).prop("disabled", true).val("");
-            }
-        });
-    </script>
-@endsection
