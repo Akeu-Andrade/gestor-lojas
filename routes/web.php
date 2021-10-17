@@ -20,7 +20,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     Auth::routes(['register' => false, 'reset' => false, 'confirm' => false]);
 });
 
-Route::redirect('/', 'login');
+Route::view('/welcome', 'welcome');
+
+//Route::redirect('/', 'login');
 
 Route::middleware(['middleware' => 'auth'])->group(function() {
     foreach (config('modules') as $module) {

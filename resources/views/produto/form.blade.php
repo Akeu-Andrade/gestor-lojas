@@ -33,7 +33,7 @@ use App\Business\Produto\Models\Produto;
     </div>
     <div class="col">
         <label for="desconto_porcento">Desconto <span style="font-size: 11px"> &nbsp;&nbsp;(Em %, defina o desconto no produto) </span></label>
-        <input type="number" class="form-control" id="desconto_porcento" name="desconto_porcento"
+        <input type="number" step="0.01" min="0.01" class="form-control" id="desconto_porcento" name="desconto_porcento"
                value="{{$model->desconto_porcento ?? old('desconto_porcento')}}">
     </div>
 </div>
@@ -61,7 +61,7 @@ use App\Business\Produto\Models\Produto;
 <div class="form-row" style="padding-bottom: 20px">
     <div class="col">
         <label for="valor_uni">Valor<span style="font-size: 11px"> &nbsp;&nbsp;(Valor do produto) </span></label>
-        <input type="number" class="form-control" id="valor_uni" name="valor_uni" required
+        <input type="number" step="0.01" min="0.01" class="form-control" id="valor_uni" name="valor_uni" required
                value="{{$model->valor_uni ?? old('valor_uni')}}">
     </div>
     <div class="col">
