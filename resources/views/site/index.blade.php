@@ -1,26 +1,12 @@
-{{--@extends('layouts.app', ['class' => 'off-canvas-sidebar', 'activePage' => 'home', 'title' => __('Gestor de loja')])--}}
-
-{{--@section('content')--}}
-{{--<div class="container" style="height: auto;">--}}
-{{--  <div class="row justify-content-center">--}}
-{{--      <div class="col-lg-7 col-md-8">--}}
-{{--          <h1 class="text-white text-center">{{ __('Bem vindo ao seu gestor de loja.') }}</h1>--}}
-{{--      </div>--}}
-{{--  </div>--}}
-{{--</div>--}}
-{{--@endsection--}}
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Laravel</title>
     <link rel="icon" href="assets/images/items/1.jpg" type="image/x-icon"/>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/ui.css" rel="stylesheet">
@@ -34,34 +20,12 @@
 <body>
 
 <header class="section-header">
-
-    <nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
-        <div class="container">
-            <ul class="navbar-nav d-none d-md-flex mr-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Delivery</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
-            </ul>
-            <ul class="navbar-nav">
-                <li  class="nav-item"><a href="#" class="nav-link"> Call: +0000000000 </a></li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> English </a>
-                    <ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
-                        <li><a class="dropdown-item" href="#">Arabic</a></li>
-                        <li><a class="dropdown-item" href="#">Russian </a></li>
-                    </ul>
-                </li>
-            </ul> <!-- list-inline //  -->
-
-        </div> <!-- container //  -->
-    </nav> <!-- header-top-light.// -->
-
     <section class="header-main border-bottom">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-6">
                     <a href="#" class="brand-wrap">
-                        Company Name
+                        {{$loja->nome}}
                     </a> <!-- brand-wrap.// -->
                 </div>
                 <div class="col-lg-6 col-12 col-sm-12">
@@ -97,15 +61,11 @@
             </div> <!-- row.// -->
         </div> <!-- container.// -->
     </section> <!-- header-main .// -->
-
-
-
     <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
@@ -144,48 +104,36 @@
             </div> <!-- collapse .// -->
         </div> <!-- container .// -->
     </nav>
-
 </header> <!-- section-header.// -->
-
-
-
 <!-- ========================= SECTION INTRO ========================= -->
 <section class="section-intro padding-y-sm">
     <div class="container">
-
         <div class="intro-banner-wrap">
             <img src="assets/images/1.jpg" class="img-fluid rounded">
         </div>
-
     </div> <!-- container //  -->
 </section>
 <!-- ========================= SECTION INTRO END// ========================= -->
-
-
 <!-- ========================= SECTION FEATURE ========================= -->
 <section class="section-content padding-y-sm">
     <div class="container">
         <article class="card card-body">
-
-
             <div class="row">
                 <div class="col-md-4">
                     <figure class="item-feature">
                         <span class="text-primary"><i class="fa fa-2x fa-truck"></i></span>
                         <figcaption class="pt-3">
-                            <h5 class="title">Fast delivery</h5>
-                            <p>Dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore </p>
+                            <h5 class="title">Entrega rápida</h5>
+                            <p> Você continua comprando em estabelecimentos que deixam você esperando?  </p>
                         </figcaption>
                     </figure> <!-- iconbox // -->
                 </div><!-- col // -->
                 <div class="col-md-4">
                     <figure  class="item-feature">
-                        <span class="text-primary"><i class="fa fa-2x fa-landmark"></i></span>
+                        <span class="text-primary"><i class="fa fa-2x fa-rocket"></i></span>
                         <figcaption class="pt-3">
-                            <h5 class="title">Creative Strategy</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            </p>
+                            <h5 class="title"> Inovação </h5>
+                            <p> Buscando o próximo nível sempre</p>
                         </figcaption>
                     </figure> <!-- iconbox // -->
                 </div><!-- col // -->
@@ -193,130 +141,47 @@
                     <figure  class="item-feature">
                         <span class="text-primary"><i class="fa fa-2x fa-lock"></i></span>
                         <figcaption class="pt-3">
-                            <h5 class="title">High secured </h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            </p>
+                            <h5 class="title"> Seguro </h5>
+                            <p> Privacidade, Segurança e Confinaça</p>
                         </figcaption>
                     </figure> <!-- iconbox // -->
                 </div> <!-- col // -->
             </div>
         </article>
-
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION FEATURE END// ========================= -->
-
-
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content">
     <div class="container">
-
         <header class="section-heading">
-            <h3 class="section-title">Popular products</h3>
+            <h3 class="section-title">Novos ✨</h3>
         </header><!-- sect-heading -->
-
-
         <div class="row">
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/1.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Just another product name</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                    </figcaption>
+                @foreach($novos as $produto)
+                <div class="col-md-3">
+                    <div href="#" class="card card-product-grid">
+                        <a href="#" class="img-wrap"> <img src="{{$produto->getCaminhoImagem()}}"> </a>
+                        <figcaption class="info-wrap">
+                            <a href="#" class="title">{{$produto->nome}}</a>
+{{--                            <div class="rating-wrap">--}}
+{{--                                <span class="label-rating text-muted"> 34 reviws</span>--}}
+{{--                            </div>--}}
+                            <div class="price mt-1">R$ {{$produto->valor_uni}}</div> <!-- price-wrap.// -->
+                        </figcaption>
+                    </div>
                 </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/2.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Some item name here</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/3.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Great product name here</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/4.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Just another product name</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
+                @endforeach
         </div> <!-- row.// -->
-
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
-
-
-
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content">
     <div class="container">
-
         <header class="section-heading">
             <h3 class="section-title">New arrived</h3>
         </header><!-- sect-heading -->
-
         <div class="row">
             <div class="col-md-3">
                 <div href="#" class="card card-product-grid">
@@ -403,22 +268,16 @@
                 </div>
             </div> <!-- col.// -->
         </div> <!-- row.// -->
-
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
-
-
-
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-bottom-sm">
     <div class="container">
-
         <header class="section-heading">
             <a href="#" class="btn btn-outline-primary float-right">See all</a>
             <h3 class="section-title">Recommended</h3>
         </header><!-- sect-heading -->
-
         <div class="row">
             <div class="col-md-3">
                 <div href="#" class="card card-product-grid">
@@ -457,77 +316,9 @@
                 </div>
             </div> <!-- col.// -->
         </div> <!-- row.// -->
-
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
-
-<!-- ========================= SECTION  ========================= -->
-<section class="section-name bg padding-y-sm">
-    <div class="container">
-        <header class="section-heading">
-            <h3 class="section-title">Our Brands</h3>
-        </header><!-- sect-heading -->
-
-        <div class="row">
-            <div class="col-md-2 col-6">
-                <figure class="box item-logo">
-                    <a href="#"><img src="assets/images/logos/logo1.png"></a>
-                    <figcaption class="border-top pt-2">36 Products</figcaption>
-                </figure> <!-- item-logo.// -->
-            </div> <!-- col.// -->
-            <div class="col-md-2  col-6">
-                <figure class="box item-logo">
-                    <a href="#"><img src="assets/images/logos/logo2.png"></a>
-                    <figcaption class="border-top pt-2">980 Products</figcaption>
-                </figure> <!-- item-logo.// -->
-            </div> <!-- col.// -->
-            <div class="col-md-2  col-6">
-                <figure class="box item-logo">
-                    <a href="#"><img src="assets/images/logos/logo3.png"></a>
-                    <figcaption class="border-top pt-2">25 Products</figcaption>
-                </figure> <!-- item-logo.// -->
-            </div> <!-- col.// -->
-            <div class="col-md-2  col-6">
-                <figure class="box item-logo">
-                    <a href="#"><img src="assets/images/logos/logo4.png"></a>
-                    <figcaption class="border-top pt-2">72 Products</figcaption>
-                </figure> <!-- item-logo.// -->
-            </div> <!-- col.// -->
-            <div class="col-md-2  col-6">
-                <figure class="box item-logo">
-                    <a href="#"><img src="assets/images/logos/logo5.png"></a>
-                    <figcaption class="border-top pt-2">41 Products</figcaption>
-                </figure> <!-- item-logo.// -->
-            </div> <!-- col.// -->
-            <div class="col-md-2  col-6">
-                <figure class="box item-logo">
-                    <a href="#"><img src="assets/images/logos/logo2.png"></a>
-                    <figcaption class="border-top pt-2">12 Products</figcaption>
-                </figure> <!-- item-logo.// -->
-            </div> <!-- col.// -->
-        </div> <!-- row.// -->
-    </div><!-- container // -->
-</section>
-<!-- ========================= SECTION  END// ========================= -->
-
-
-
-<!-- ========================= SECTION  ========================= -->
-<section class="section-name padding-y">
-    <div class="container">
-
-        <h3 class="mb-3">Download app demo text</h3>
-
-        <a href="#"><img src="assets/images/misc/appstore.png" height="40"></a>
-        <a href="#"><img src="assets/images/misc/appstore.png" height="40"></a>
-
-    </div><!-- container // -->
-</section>
-<!-- ========================= SECTION  END// ======================= -->
-
-
-
 
 <!-- ========================= FOOTER ========================= -->
 <footer class="section-footer border-top bg">
@@ -582,8 +373,7 @@
                     </ul>
                 </aside>
             </div> <!-- row.// -->
-        </section>	<!-- footer-top.// -->
-
+        </section>  <!-- footer-top.// -->
         <section class="footer-bottom row">
             <div class="col-md-2">
                 <p class="text-muted">   2021 Company name </p>

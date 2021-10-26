@@ -20,9 +20,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function (){
     Auth::routes(['register' => false, 'reset' => false, 'confirm' => false]);
 });
 
-Route::view('/welcome', 'welcome');
+//Route::view('/welcome', 'welcome');
 
-//Route::redirect('/', 'login');
+Route::redirect('/', 'welcome');
+
+foreach (config('modules-site') as $module) {
+    /**
+     * @var Module $objModule
+     */
+    $objModule = new $module();
+
+    $objModule->routeWeb();
+}
 
 Route::middleware(['middleware' => 'auth'])->group(function() {
     foreach (config('modules') as $module) {
@@ -33,7 +42,7 @@ Route::middleware(['middleware' => 'auth'])->group(function() {
 
         $objModule->routeWeb();
     }
-    //Rodas do templete
+    //Rotas do templete
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

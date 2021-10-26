@@ -4,7 +4,7 @@ namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
-class VariacaoProdutosTableSeeder extends Seeder
+class PedidosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,10 +13,10 @@ class VariacaoProdutosTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('variacao_produtos')->insert([
-            'nome' => 'Tamanho',
-            'produto_id' => 1,
-            'qtd_opcao' => 2,
+        DB::table('pedidos')->insert([
+            'user_comprador_id' => 1,
+            'status' => 1,
+            'forma_pagamento' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);

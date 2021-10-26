@@ -19,13 +19,12 @@ class CreateProdutosTable extends Migration
             $table->string('nome');
             $table->string('descricao')->nullable();
             $table->integer('quantidade')->nullable();
-            $table->double('valor_uni')->nullable();
+            $table->decimal('valor_uni', 6, 2)->default(0);
             $table->string('imagem')->nullable();
-            $table->double('quantidade_estoque')->nullable();
             $table->string('observacao')->nullable();
             $table->integer('status_produto')->default(SimNaoEnum::Sim);
-            $table->double('desconto_porcento')->nullable();
-            $table->double('valor_entrega')->nullable();
+            $table->integer('desconto_porcento')->nullable();
+            $table->double('valor_entrega', 6, 2)->default(0);
             $table->string('tamanho')->nullable();
 
             $table->unsignedBigInteger('categoria_id')->nullable();

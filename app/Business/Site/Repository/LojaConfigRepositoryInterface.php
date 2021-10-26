@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Business\Produto\Repository\ItemVariacaoProduto;
+namespace App\Business\Site\Repository;
 
 use App\Business\RepositoryInterface;
 use Illuminate\Http\Request;
 
-interface ItemVariacaoProdutoRepositoryInterface extends RepositoryInterface
+interface LojaConfigRepositoryInterface extends RepositoryInterface
 {
     /**
      * @param Request $request
@@ -14,8 +14,8 @@ interface ItemVariacaoProdutoRepositoryInterface extends RepositoryInterface
     public function store(Request $request);
 
     /**
-     * @param int $id
      * @param Request $request
+     * @param int $id
      * @return mixed
      */
     public function replace(int $id, Request $request);

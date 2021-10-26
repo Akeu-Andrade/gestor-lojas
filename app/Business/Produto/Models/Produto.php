@@ -6,10 +6,8 @@ use App\Models\User;
 use App\Models\UserLog;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -19,16 +17,15 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property string $nome
  * @property string|null $descricao
- * @property string|null $tamanho
  * @property int|null $quantidade
  * @property float|null $valor_uni
  * @property string|null $imagem
  * @property float|null $quantidade_estoque
  * @property string|null $observacao
- * @property int|null $status_produto
+ * @property int $status_produto
  * @property float|null $desconto_porcento
- * @property int|null $is_retirar
  * @property float|null $valor_entrega
+ * @property string|null $tamanho
  * @property int|null $categoria_id
  * @property int|null $user_id_cadastro
  * @property int|null $user_id_alteracao
@@ -36,8 +33,8 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read Categoria|null $categoria
- * @property-read Collection|Compra[] $compra
- * @property-read int|null $compra_usuario_count
+ * @property-read User|null $userAlteracao
+ * @property-read User|null $userCadastro
  * @property-read User $usuarioCadastro
  * @method static Builder|Produto newModelQuery()
  * @method static Builder|Produto newQuery()
@@ -52,12 +49,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Produto whereDescricao($value)
  * @method static Builder|Produto whereId($value)
  * @method static Builder|Produto whereImagem($value)
- * @method static Builder|Produto whereIsRetirar($value)
  * @method static Builder|Produto whereNome($value)
  * @method static Builder|Produto whereObservacao($value)
  * @method static Builder|Produto whereQuantidade($value)
  * @method static Builder|Produto whereQuantidadeEstoque($value)
  * @method static Builder|Produto whereStatusProduto($value)
+ * @method static Builder|Produto whereTamanho($value)
  * @method static Builder|Produto whereUpdatedAt($value)
  * @method static Builder|Produto whereUserIdAlteracao($value)
  * @method static Builder|Produto whereUserIdCadastro($value)
@@ -115,14 +112,6 @@ class Produto extends Model
     public function categoria(): BelongsTo
     {
         return $this->belongsTo(Categoria::class);
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function compra(): HasMany
-    {
-        return $this->hasMany(Compra::class);
     }
 
     public function scopeWhereCreatedAtAte(Builder $query, string $data)

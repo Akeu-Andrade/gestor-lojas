@@ -20,6 +20,7 @@ class CreateLojasTable extends Migration
             $table->string('cor')->nullable();
             $table->string('cor_dois')->nullable();
             $table->string('logo')->nullable();
+            $table->string('banner')->nullable();
             $table->string('descricao')->nullable();
             $table->string('numero')->nullable();
             $table->string('link_whatsapp')->nullable();
@@ -28,6 +29,7 @@ class CreateLojasTable extends Migration
             $table->string('pagina_web')->nullable();
             $table->string('link_app')->nullable();
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

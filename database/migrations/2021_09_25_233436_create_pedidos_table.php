@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComprasTable extends Migration
+class CreatePedidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,16 +14,10 @@ class CreateComprasTable extends Migration
      */
     public function up()
     {
-        Schema::create('compras', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('status_compra')->default(StatusCompraEnum::CARRINHO); //Enum
+            $table->tinyInteger('status')->default(StatusCompraEnum::CARRINHO); //Enum
             $table->tinyInteger('forma_pagamento')->default(1); //Enum
-            $table->double('quantidade')->nullable();
-            $table->string('observacao')->nullable();
-            $table->tinyInteger('is_retirar')->nullable();
-
-            $table->unsignedBigInteger('produto_id')->nullable();
-            $table->foreign('produto_id')->references('id')->on('produtos');
 
             $table->unsignedBigInteger('user_comprador_id')->nullable();
             $table->foreign('user_comprador_id')->references('id')->on('users');
@@ -46,6 +40,6 @@ class CreateComprasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('compras');
+        Schema::dropIfExists('pedidos');
     }
 }

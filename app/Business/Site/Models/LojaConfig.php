@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Business\Seguranca\Models;
+namespace App\Business\Site\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $cor
  * @property string|null $cor_dois
  * @property string|null $logo
+ * @property string|null $banner
  * @property string|null $descricao
  * @property string|null $numero
  * @property string|null $link_whatsapp
@@ -29,6 +30,7 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|LojaConfig newQuery()
  * @method static Builder|LojaConfig onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|LojaConfig query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LojaConfig whereBanner($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LojaConfig whereCor($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LojaConfig whereCorDois($value)
  * @method static \Illuminate\Database\Eloquent\Builder|LojaConfig whereCreatedAt($value)
@@ -50,12 +52,14 @@ use Illuminate\Support\Carbon;
 class LojaConfig extends Model
 {
     use SoftDeletes;
+    CONST DIR_FOTO = "lojaconfig/imagem/";
 
     protected $fillable = [
         'nome',
         'cor',
         'cor_dois',
         'logo',
+        'banner',
         'descricao',
         'numero',
         'link_whatsapp',
@@ -64,5 +68,21 @@ class LojaConfig extends Model
         'pagina_web',
         'link_app',
     ];
+
+    public function getCaminhoLogo()
+    {
+        if (empty($this->logo)) {
+            return "";
+        }
+        return asset("storage/".self::DIR_FOTO.$this->logo);
+    }
+
+    public function getCaminhoBanner()
+    {
+        if (empty($this->banner)) {
+            return "";
+        }
+        return asset("storage/".self::DIR_FOTO.$this->banner);
+    }
 
 }
