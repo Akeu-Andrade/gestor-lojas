@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Business\Produto\Models\Categoria;
 use App\Business\Produto\Models\Pedido;
 use App\Business\Produto\Models\Produto;
 use App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface;
@@ -43,19 +44,44 @@ class SiteController extends BaseController
 
         $loja = LojaConfig::query()->first();
 
-        $novos = $this->novos(4);
+        $novos = $this->tempoLancado(4, 'desc');
+
+        $velhos = $this->tempoLancado(4, 'asc');
+
+        $descontos = $this->desconto(4);
+
+        $allCategorias = Categoria::query()->get();
+
+        $categorias = $this->topCategoria(8);
 
         return view( $this->getFolderView(). ".index", [
             'url' => $this->getUrl(),
             'novos' => $novos,
-            'loja' => $loja
+            'descontos' => $descontos,
+            'velhos' => $velhos,
+            'loja' => $loja,
+            'allCategorias' => $allCategorias,
+            'categorias' => $categorias
         ]);
     }
 
-    public function novos(int $quantidade){
+    public function topCategoria(int $quantidade){
+        return Categoria::query()->limit($quantidade)->get();
+    }
+
+    public function tempoLancado(int $quantidade, string $ordem){
         return Produto::whereStatusProduto(SimNaoEnum::Sim)
             ->where('quantidade', '>', 0)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', $ordem)
+            ->limit($quantidade)
+            ->get();
+    }
+
+    public function desconto(int $quantidade){
+        return Produto::whereStatusProduto(SimNaoEnum::Sim)
+            ->where('quantidade', '>', 0)
+            ->where('desconto_porcento', '!=', null)
+            ->orderBy('desconto_porcento', 'desc')
             ->limit($quantidade)
             ->get();
     }

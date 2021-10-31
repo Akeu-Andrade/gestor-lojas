@@ -1,33 +1,33 @@
 <?php
 
-namespace App\View\Menu\Produto;
+namespace App\View\Menu\Loja;
 
 use App\View\Menu\LinkMenu;
 
-class ProdutoLink extends LinkMenu
+class LojaLink extends LinkMenu
 {
     public function getName(): String
     {
-        return "Produto";
+        return "Loja";
     }
 
     public function getComponete(): String
     {
-        return 'produto';
+        return 'loja';
     }
 
     public function getIcon(): String
     {
-        return 'local_grocery_store';
+        return 'store';
     }
 
     public function getPermission(): String
     {
-        return "produtocontroller@index";
+        return "lojacontroller@index";
     }
 
     public function getLink(): String
     {
-        return route('produto.index');
+        return route('loja.index');
     }
 }

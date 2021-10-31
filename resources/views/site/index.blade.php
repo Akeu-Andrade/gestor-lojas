@@ -1,10 +1,20 @@
+<?php
+/**
+ * @var Produto $produto
+ * @var LojaConfig $loja
+ */
+
+use App\Business\Produto\Models\Produto;
+use App\Business\Site\Models\LojaConfig;
+
+?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
-    <link rel="icon" href="assets/images/items/1.jpg" type="image/x-icon"/>
+    <title>{{$loja->nome}}</title>
+    <link rel="icon" href={{empty($loja->logo) ? 'assets/images/items/1.jpg' : $loja->getCaminhoLogo()}} type="image/x-icon"/>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -24,7 +34,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-6">
-                    <a href="#" class="brand-wrap">
+                    <a href="/" class="brand-wrap">
+                        <img width="50rm" src="{{$loja->getCaminhoLogo()}}" alt="logo" />
                         {{$loja->nome}}
                     </a> <!-- brand-wrap.// -->
                 </div>
@@ -49,7 +60,7 @@
                         <div class="widget-header icontext">
                             <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
                             <div class="text">
-                                <span class="text-muted">Welcome!</span>
+                                <span class="text-muted">Bem Vindo!</span>
                                 <div>
                                     <a href="#">Sign in</a> |
                                     <a href="#"> Register</a>
@@ -69,37 +80,18 @@
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link pl-0" data-toggle="dropdown" href="#"><strong> <i class="fa fa-bars"></i>    All category</strong></a>
+                        <a class="nav-link pl-0" data-toggle="dropdown" href="#"><strong> <i class="fa fa-bars"></i> Todas categorias </strong></a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Foods and Drink</a>
-                            <a class="dropdown-item" href="#">Home interior</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Category 1</a>
-                            <a class="dropdown-item" href="#">Category 2</a>
-                            <a class="dropdown-item" href="#">Category 3</a>
+                            @foreach($allCategorias as $categoria)
+                                <a class="dropdown-item" href="#">{{$categoria->name}}</a>
+                            @endforeach
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fashion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Supermarket</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Electronics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Baby &amp Toys</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fitness sport</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Clothing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Furnitures</a>
-                    </li>
+                    @foreach($categorias as $categoria)
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{{$categoria->name}}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div> <!-- collapse .// -->
         </div> <!-- container .// -->
@@ -109,7 +101,7 @@
 <section class="section-intro padding-y-sm">
     <div class="container">
         <div class="intro-banner-wrap">
-            <img src="assets/images/1.jpg" class="img-fluid rounded">
+            <img src="{{empty($loja->imagem) ? 'assets/images/1.jpg' : $loja->getCaminhoImagem()}} " class="img-fluid rounded">
         </div>
     </div> <!-- container //  -->
 </section>
@@ -155,19 +147,24 @@
 <section class="section-content">
     <div class="container">
         <header class="section-heading">
-            <h3 class="section-title">Novos ✨</h3>
+            <a href="#" class="btn btn-outline-primary float-right">Todos</a>
+            <h3 class="section-title">New ✨</h3>
         </header><!-- sect-heading -->
         <div class="row">
                 @foreach($novos as $produto)
                 <div class="col-md-3">
                     <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="{{$produto->getCaminhoImagem()}}"> </a>
+                        <a href="#" class="img-wrap"> <img src="{{$produto->getCaminhoImagem()}}" alt={{$produto->nome}}> </a>
                         <figcaption class="info-wrap">
                             <a href="#" class="title">{{$produto->nome}}</a>
-{{--                            <div class="rating-wrap">--}}
-{{--                                <span class="label-rating text-muted"> 34 reviws</span>--}}
-{{--                            </div>--}}
-                            <div class="price mt-1">R$ {{$produto->valor_uni}}</div> <!-- price-wrap.// -->
+                            <div class="rating-wrap">
+                                <span class="label-rating text-muted"> {{$produto->tamanho}}</span>
+                            </div>
+                            @if(empty($produto->desconto_porcento))
+                                <div class="price mt-1">R$ {{number_format($produto->valor_uni, 2, ',', ' ')}}</div>
+                            @else
+                                <div class="price mt-1"> De <s style="color: red"> R$ {{number_format($produto->valor_uni, 2, ',', ' ')}}</s>  por  R$ {{number_format($produto->valor_uni - ($produto->valor_uni / 100 * $produto->desconto_porcento), 2, ',', ' ')}}</div>
+                            @endif
                         </figcaption>
                     </div>
                 </div>
@@ -180,141 +177,57 @@
 <section class="section-content">
     <div class="container">
         <header class="section-heading">
-            <h3 class="section-title">New arrived</h3>
+            <h3 class="section-title">Hot 🔥</h3>
         </header><!-- sect-heading -->
         <div class="row">
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/5.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Just another product name</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                    </figcaption>
+            @foreach($descontos as $produto)
+                <div class="col-md-3">
+                    <div href="#" class="card card-product-grid">
+                        <a href="#" class="img-wrap"> <img src="{{$produto->getCaminhoImagem()}}" alt={{$produto->nome}}> </a>
+                        <figcaption class="info-wrap">
+                            <a href="#" class="title">{{$produto->nome}}</a>
+                            <div class="rating-wrap">
+                                <span class="label-rating text-muted"> {{$produto->tamanho}}</span>
+                            </div>
+                            @if(empty($produto->desconto_porcento))
+                                <div class="price mt-1">R$ {{number_format($produto->valor_uni, 2, ',', ' ')}}</div>
+                            @else
+                                <div class="price mt-1"> De <s style="color: red"> R$ {{number_format($produto->valor_uni, 2, ',', ' ')}}</s>  por  R$ {{number_format($produto->valor_uni - ($produto->valor_uni / 100 * $produto->desconto_porcento), 2, ',', ' ')}}</div>
+                            @endif
+                        </figcaption>
+                    </div>
                 </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/6.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Some item name here</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/7.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Great product name here</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/9.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Just another product name</a>
-
-                        <div class="rating-wrap">
-                            <ul class="rating-stars">
-                                <li style="width:80%" class="stars-active">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                                <li>
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                </li>
-                            </ul>
-                            <span class="label-rating text-muted"> 34 reviws</span>
-                        </div>
-                        <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
+            @endforeach
         </div> <!-- row.// -->
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
+
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-bottom-sm">
     <div class="container">
         <header class="section-heading">
-            <a href="#" class="btn btn-outline-primary float-right">See all</a>
-            <h3 class="section-title">Recommended</h3>
+            <h3 class="section-title">Recomendados</h3>
         </header><!-- sect-heading -->
         <div class="row">
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/1.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Just another product name</a>
-                        <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                    </figcaption>
+            @foreach($velhos as $produto)
+                <div class="col-md-3">
+                    <div href="#" class="card card-product-grid">
+                        <a href="#" class="img-wrap"> <img src="{{$produto->getCaminhoImagem()}}" alt={{$produto->nome}}> </a>
+                        <figcaption class="info-wrap">
+                            <a href="#" class="title">{{$produto->nome}}</a>
+                            <div class="rating-wrap">
+                                <span class="label-rating text-muted"> {{$produto->tamanho}}</span>
+                            </div>
+                            @if(empty($produto->desconto_porcento))
+                                <div class="price mt-1">R$ {{number_format($produto->valor_uni, 2, ',', ' ')}}</div>
+                            @else
+                                <div class="price mt-1"> De <s style="color: red"> R$ {{number_format($produto->valor_uni, 2, ',', ' ')}}</s>  por  R$ {{number_format($produto->valor_uni - ($produto->valor_uni / 100 * $produto->desconto_porcento), 2, ',', ' ')}}</div>
+                            @endif
+                        </figcaption>
+                    </div>
                 </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/2.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Some item name here</a>
-                        <div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/3.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Great product name here</a>
-                        <div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
-            <div class="col-md-3">
-                <div href="#" class="card card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="assets/images/items/4.jpg"> </a>
-                    <figcaption class="info-wrap">
-                        <a href="#" class="title">Just another product name</a>
-                        <div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-                    </figcaption>
-                </div>
-            </div> <!-- col.// -->
+            @endforeach
         </div> <!-- row.// -->
     </div> <!-- container .//  -->
 </section>
@@ -326,7 +239,7 @@
         <section class="footer-top  padding-y">
             <div class="row">
                 <aside class="col-md col-6">
-                    <h6 class="title">Brands</h6>
+                    <h6 class="title">Marcas</h6>
                     <ul class="list-unstyled">
                         <li> <a href="#">Adidas</a></li>
                         <li> <a href="#">Puma</a></li>
@@ -339,49 +252,34 @@
                     <ul class="list-unstyled">
                         <li> <a href="#">About us</a></li>
                         <li> <a href="#">Career</a></li>
-                        <li> <a href="#">Find a store</a></li>
                         <li> <a href="#">Rules and terms</a></li>
                         <li> <a href="#">Sitemap</a></li>
                     </ul>
                 </aside>
                 <aside class="col-md col-6">
-                    <h6 class="title">Help</h6>
+                    <h6 class="title">Minha conta</h6>
                     <ul class="list-unstyled">
-                        <li> <a href="#">Contact us</a></li>
-                        <li> <a href="#">Money refund</a></li>
-                        <li> <a href="#">Order status</a></li>
-                        <li> <a href="#">Shipping info</a></li>
-                        <li> <a href="#">Open dispute</a></li>
-                    </ul>
-                </aside>
-                <aside class="col-md col-6">
-                    <h6 class="title">Account</h6>
-                    <ul class="list-unstyled">
-                        <li> <a href="#"> User Login </a></li>
-                        <li> <a href="#"> User register </a></li>
+                        <li> <a href="#"> Login </a></li>
+                        <li> <a href="#"> Register </a></li>
                         <li> <a href="#"> Account Setting </a></li>
-                        <li> <a href="#"> My Orders </a></li>
                     </ul>
                 </aside>
                 <aside class="col-md">
                     <h6 class="title">Social</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#"> <i class="fab fa-facebook"></i> Facebook </a></li>
-                        <li><a href="#"> <i class="fab fa-twitter"></i> Twitter </a></li>
-                        <li><a href="#"> <i class="fab fa-instagram"></i> Instagram </a></li>
-                        <li><a href="#"> <i class="fab fa-youtube"></i> Youtube </a></li>
+                        {!! !empty($loja->link_instagram) ? "<li><a href='$loja->link_instagram'> <i class='fab fa-instagram'></i> Instagram </a></li>" : '' !!}
+                        {!! !empty($loja->link_facebook) ? "<li><a href='$loja->link_facebook'> <i class='fab fa-facebook'></i> Instagram </a></li>" : '' !!}
+                        {!! !empty($loja->link_twitter) ? "<li><a href='$loja->link_twitter'> <i class='fab fa-twitter'></i> Instagram </a></li>" : '' !!}
                     </ul>
                 </aside>
             </div> <!-- row.// -->
         </section>  <!-- footer-top.// -->
         <section class="footer-bottom row">
             <div class="col-md-2">
-                <p class="text-muted">   2021 Company name </p>
+                <p class="text-muted"> {{now()->year}} {{$loja->nome}} </p>
             </div>
             <div class="col-md-8 text-md-center">
-                <span  class="px-2">info@com</span>
-                <span  class="px-2">+000-000-0000</span>
-                <span  class="px-2">Street name 123, ABC</span>
+                <span  class="px-2"> {{$loja->endereco}} </span>
             </div>
             <div class="col-md-2 text-md-right text-muted">
                 <i class="fab fa-lg fa-cc-visa"></i>
