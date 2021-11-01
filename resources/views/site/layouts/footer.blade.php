@@ -1,4 +1,3 @@
-
 <!-- ========================= FOOTER ========================= -->
 <footer class="section-footer border-top bg">
     <div class="container">
@@ -16,18 +15,18 @@
                 <aside class="col-md col-6">
                     <h6 class="title">Company</h6>
                     <ul class="list-unstyled">
-                        <li> <a href="#">About us</a></li>
-                        <li> <a href="#">Career</a></li>
-                        <li> <a href="#">Rules and terms</a></li>
-                        <li> <a href="#">Sitemap</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Career</a></li>
+                        <li><a href="#">Rules and terms</a></li>
+                        <li><a href="#">Sitemap</a></li>
                     </ul>
                 </aside>
                 <aside class="col-md col-6">
                     <h6 class="title">Minha conta</h6>
                     <ul class="list-unstyled">
-                        <li> <a href="#"> Login </a></li>
-                        <li> <a href="#"> Register </a></li>
-                        <li> <a href="#"> Account Setting </a></li>
+                        <li><a href="#"> Login </a></li>
+                        <li><a href="#"> Register </a></li>
+                        <li><a href="#"> Account Setting </a></li>
                     </ul>
                 </aside>
                 <aside class="col-md">
@@ -45,7 +44,7 @@
                 <p class="text-muted"> {{now()->year}} {{$loja->nome}} </p>
             </div>
             <div class="col-md-8 text-md-center">
-                <span  class="px-2"> {{$loja->endereco}} </span>
+                <span class="px-2"> {{$loja->endereco}} </span>
             </div>
             <div class="col-md-2 text-md-right text-muted">
                 <i class="fab fa-lg fa-cc-visa"></i>

@@ -14,7 +14,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Input;
 
 class SiteController extends BaseController
 {
@@ -26,7 +25,7 @@ class SiteController extends BaseController
     {
         parent::__construct($repository);
 
-        $this->setPages(10);
+        $this->setPages(5);
         $this->setFolderView("site");
         $this->setName("welcome");
         $this->setUrl(route('welcome'));
