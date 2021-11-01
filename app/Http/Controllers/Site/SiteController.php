@@ -14,6 +14,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Input;
 
 class SiteController extends BaseController
 {
@@ -43,19 +44,25 @@ class SiteController extends BaseController
     {
 
         $loja = LojaConfig::query()->first();
-
         $novos = $this->tempoLancado(4, 'desc');
-
         $velhos = $this->tempoLancado(4, 'asc');
-
         $descontos = $this->desconto(4);
-
         $allCategorias = Categoria::query()->get();
-
         $categorias = $this->topCategoria(8);
+
+        $produtos = null;
+        if (!empty($request->all())){
+            $this->getRepository()->findBy($request->request->all())->order('nome', 'asc');
+            $produtos = $this->getRepository()->paginate($this->getPages());
+            $produtos->appends($request->except('page'));
+            $this->setFolderView('site/lista');
+        } else {
+            $this->setFolderView('site');
+        }
 
         return view( $this->getFolderView(). ".index", [
             'url' => $this->getUrl(),
+            'produtos' => $produtos,
             'novos' => $novos,
             'descontos' => $descontos,
             'velhos' => $velhos,
