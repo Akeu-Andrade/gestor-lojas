@@ -4,8 +4,11 @@ namespace App\Modules;
 
 use App\Business\Produto\Repository\Produto\ProdutoRepository;
 use App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface;
-use App\Business\Site\Models\LojaConfig;
+use App\Business\Site\Repository\PedidoRepositoryInterface;
+use App\Business\Site\Repository\LojaConfigRepository;
 use App\Business\Site\Repository\LojaConfigRepositoryInterface;
+use App\Business\Site\Repository\PedidoRepository;
+use App\Http\Controllers\Site\PedidoController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,15 +33,27 @@ class SiteModule extends Module
         );
 
         $app->bind(
-            LojaConfigRepositoryInterface::class,
-            LojaConfig::class
+            PedidoRepositoryInterface::class,
+            PedidoRepository::class
         );
 
+        $app->bind(
+            LojaConfigRepositoryInterface::class,
+            LojaConfigRepository::class
+        );
     }
 
     public function routeWeb(): void
     {
         Route::get('/welcome', [SiteController::class, 'index'])->name('welcome');
+        Route::get('/pedido/{produto}', [SiteController::class, 'show']);
+
+        Route::post('/carrinho/adicionar', [PedidoController::class, 'adicionar'])->name('carrinho.adicionarr');
+
+        Route::get('/carrinho/adicionar', function() {
+            return redirect()->route('index');
+        });
+
     }
 
     public function routeApi(): void

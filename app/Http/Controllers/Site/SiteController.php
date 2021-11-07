@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Site;
 
 use App\Business\Produto\Models\Categoria;
-use App\Business\Produto\Models\Pedido;
 use App\Business\Produto\Models\Produto;
 use App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface;
 use App\Business\Site\Models\LojaConfig;
@@ -17,6 +16,7 @@ use Illuminate\View\View;
 
 class SiteController extends BaseController
 {
+
     /**
      * SiteController constructor.
      * @param ProdutoRepositoryInterface $repository
@@ -25,7 +25,7 @@ class SiteController extends BaseController
     {
         parent::__construct($repository);
 
-        $this->setPages(5);
+        $this->setPages(20);
         $this->setFolderView("site");
         $this->setName("welcome");
         $this->setUrl(route('welcome'));
@@ -42,7 +42,7 @@ class SiteController extends BaseController
     public function index(Request $request)
     {
 
-        $loja = LojaConfig::query()->first();
+        $loja = $this->consultaLoja();
         $novos = $this->tempoLancado(4, 'desc');
         $velhos = $this->tempoLancado(4, 'asc');
         $descontos = $this->desconto(4);
@@ -71,6 +71,12 @@ class SiteController extends BaseController
         ]);
     }
 
+    //Consulta as config da loja
+    public function consultaLoja()
+    {
+        return LojaConfig::query()->first();
+    }
+
     public function topCategoria(int $quantidade){
         return Categoria::query()->limit($quantidade)->get();
     }
@@ -89,6 +95,31 @@ class SiteController extends BaseController
             ->where('desconto_porcento', '!=', null)
             ->orderBy('desconto_porcento', 'desc')
             ->limit($quantidade)
+            ->get();
+    }
+
+    public function show($id)
+    {
+        $pedido = $this->consultaProdutosId($id);
+        $allCategorias = Categoria::query()->get();
+        $loja = $this->consultaLoja();
+        $categorias = $this->topCategoria(8);
+        $this->setFolderView('site');
+
+        return view($this->getFolderView(). ".pedido", [
+            'pedido' => $pedido,
+            'loja' => $loja,
+            'allCategorias' => $allCategorias,
+            'categorias' => $categorias
+        ]);
+    }
+
+    //Consulta os produtos com as regras de disponivel
+    public function consultaProdutosId(int $id)
+    {
+        return Produto::whereStatusProduto(SimNaoEnum::Sim)
+            ->where('quantidade', '>', 0)
+            ->where('id', '=', $id)
             ->get();
     }
 

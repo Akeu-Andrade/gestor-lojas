@@ -6,12 +6,14 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <link href="assets/css/ui.css" rel="stylesheet">
-    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/ui.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/responsive.css')}}" rel="stylesheet">
 
-    <link href="assets/css/all.min.css" rel="stylesheet">
-    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <link href="{{asset('assets/css/all.min.css')}}" rel="stylesheet">
+    <script src="{{asset('assets/js/jquery.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
 
 </head>
+
+@include('site.layouts.header')

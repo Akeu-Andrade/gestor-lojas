@@ -1,11 +1,13 @@
 <?php
 /**
- * @var Produto $produto
+ * @var Produto  $produto
+ * @var LengthAwarePaginator $produtos
  * @var LojaConfig $loja
  */
 
 use App\Business\Produto\Models\Produto;
 use App\Business\Site\Models\LojaConfig;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 ?>
 <!DOCTYPE html>
@@ -13,77 +15,6 @@ use App\Business\Site\Models\LojaConfig;
 
 @include('site.layouts.head')
 <body>
-
-<header class="section-header">
-    <section class="header-main border-bottom">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-2 col-6">
-                    <a href="/" class="brand-wrap">
-                        <img width="50rm" src="{{$loja->getCaminhoLogo()}}" alt="logo" />
-                        {{$loja->nome}}
-                    </a> <!-- brand-wrap.// -->
-                </div>
-                <div class="col-lg-6 col-12 col-sm-12">
-                    <form action="{{  url('/welcome') }}" class="search" method="get">
-                        <div class="input-group w-100">
-                            <input type="text" name="nomeLike" class="form-control" placeholder="Search"
-                                   value="{{Request::input('nomeLike')}}">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form> <!-- search-wrap .end// -->
-                </div> <!-- col.// -->
-                <div class="col-lg-4 col-sm-6 col-12">
-                    <div class="widgets-wrap float-md-right">
-                        <div class="widget-header  mr-3">
-                            <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
-                            <span class="badge badge-pill badge-danger notify">0</span>
-                        </div>
-                        <div class="widget-header icontext">
-                            <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
-                            <div class="text">
-                                <span class="text-muted">Bem Vindo!</span>
-                                <div>
-                                    <a href="#">Sign in</a> |
-                                    <a href="#"> Register</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- widgets-wrap.// -->
-                </div> <!-- col.// -->
-            </div> <!-- row.// -->
-        </div> <!-- container.// -->
-    </section> <!-- header-main .// -->
-    <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="main_nav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link pl-0" data-toggle="dropdown" href="#"><strong> <i class="fa fa-bars"></i> Todas categorias </strong></a>
-                        <div class="dropdown-menu">
-                            @foreach($allCategorias as $categoria)
-                                <a class="dropdown-item" href="#">{{$categoria->name}}</a>
-                            @endforeach
-                        </div>
-                    </li>
-                    @foreach($categorias as $categoria)
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{$categoria->name}}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div> <!-- collapse .// -->
-        </div> <!-- container .// -->
-    </nav>
-</header> <!-- section-header.// -->
-
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content" style="min-height: 550px">
     <div class="container">
@@ -94,10 +25,10 @@ use App\Business\Site\Models\LojaConfig;
         <div class="row">
                 @foreach($produtos as $produto)
                 <div class="col-md-3">
-                    <div href="#" class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="{{$produto->getCaminhoImagem()}}" alt={{$produto->nome}}> </a>
+                    <div href="pedido/{{$produto->id}}" class="card card-product-grid">
+                        <a href="pedido/{{$produto->id}}" class="img-wrap"> <img src="{{$produto->getCaminhoImagem()}}" alt={{$produto->nome}}> </a>
                         <figcaption class="info-wrap">
-                            <a href="#" class="title">{{$produto->nome}}</a>
+                            <a href="pedido/{{$produto->id}}" class="title">{{$produto->nome}}</a>
                             <div class="rating-wrap">
                                 <span class="label-rating text-muted"> {{$produto->tamanho}}</span>
                             </div>
@@ -111,6 +42,26 @@ use App\Business\Site\Models\LojaConfig;
                 </div>
                 @endforeach
         </div> <!-- row.// -->
+        @if($produtos->lastPage() > 1)
+            <div class="col-md-2 col-xs-12" style="padding: 2px; margin-left: 10px">
+                <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Página {{ $produtos->currentPage() }} de {{ $produtos->lastPage() }}</div>
+            </div>
+            <div class="col-md-8 col-12">
+                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                    <nav class="bd-example" aria-label="data-example-id">
+                        <ul class="pagination">
+                            <li class="page-item" style="margin: 2px">
+                                <a class="btn btn-primary {{empty($produtos->previousPageUrl())? 'disabled' : ''}}"  href="{{$produtos->previousPageUrl()}}">Volte</a>
+                            </li>
+                            <li class="page-item" style="margin: 2px">
+                                <a class="btn btn-primary {{empty($produtos->nextPageUrl()) ? 'disabled' : ''}}" href="{{$produtos->nextPageUrl()}}">Prox</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        @endif
+
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->

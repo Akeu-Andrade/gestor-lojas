@@ -11,8 +11,8 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -205,8 +205,8 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -399,8 +399,8 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -593,8 +593,8 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -787,8 +787,8 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -981,8 +981,8 @@ namespace PHPSTORM_META {
         ]));
     override(\App::get(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -1175,8 +1175,8 @@ namespace PHPSTORM_META {
         ]));
     override(\App::make(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -1369,8 +1369,8 @@ namespace PHPSTORM_META {
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -1563,8 +1563,8 @@ namespace PHPSTORM_META {
         ]));
     override(\app(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -1757,8 +1757,8 @@ namespace PHPSTORM_META {
         ]));
     override(\resolve(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
@@ -1951,8 +1951,8 @@ namespace PHPSTORM_META {
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
+            'App\Business\Loja\Repository\Loja\LojaRepositoryInterface' => \App\Business\Loja\Repository\Loja\LojaRepository::class,
             'App\Business\Produto\Repository\Categoria\CategoriaRepositoryInterface' => \App\Business\Produto\Repository\Categoria\CategoriaRepository::class,
-            'App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepositoryInterface' => \App\Business\Produto\Repository\ItemVariacaoProduto\ItemVariacaoProdutoRepository::class,
             'App\Business\Produto\Repository\Produto\ProdutoRepositoryInterface' => \App\Business\Produto\Repository\Produto\ProdutoRepository::class,
             'App\Business\Seguranca\Repository\PerfilRepositoryInterface' => \App\Business\Seguranca\Repository\PerfilRepository::class,
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,

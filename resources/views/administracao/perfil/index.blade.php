@@ -16,7 +16,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">Perfils</h4>
+                            <h4 class="card-title ">Perfil</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -31,7 +31,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                     </thead>
                                     <tbody>
                                         <div class="text-right">
-{{--                                            {!! \App\View\Buttons\ButtonNew::make('perfilcontroller@create', route('perfil.create'))->render() !!}--}}
+                                            {!! \App\View\Buttons\ButtonNew::make('perfilcontroller@create', route('perfil.create'))->render() !!}
                                         </div>
                                     <?php
                                     /**
@@ -45,9 +45,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                             <td>{{ $perfil->observacao }}</td>
                                             <td class="text-right">
                                                 <div class="btn-group">
-{{--                                                    {!! \App\View\Buttons\ButtonInfo::make($perfil, '')->render() !!}--}}
-{{--                                                    {!! \App\View\Buttons\ButtonEdit::make('perfilcontroller@edit', route('perfil.edit', $perfil->id))->render() !!}--}}
-{{--                                                    {!! \App\View\Buttons\ButtonDelete::make('perfilcontroller@destroy', route('perfil.destroy', $perfil->id))->render() !!}--}}
+                                                    {!! \App\View\Buttons\ButtonEdit::make('perfilcontroller@edit', route('perfil.edit', $perfil->id))->render() !!}
+                                                    {!! \App\View\Buttons\ButtonDelete::make('perfilcontroller@destroy', route('perfil.destroy', $perfil->id))->render() !!}
                                                 </div>
                                             </td>
                                         </tr>

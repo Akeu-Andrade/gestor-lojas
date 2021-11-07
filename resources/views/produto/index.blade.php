@@ -19,7 +19,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">Produtos</h4>
@@ -28,18 +27,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
-                                        <th>#</th>
-                                        <th>Ativo</th>
-                                        <th>Nome</th>
-                                        <th>Descrição</th>
-                                        <th>Tamanho</th>
-                                        <th>Estoque</th>
-                                        <th>Imagem</th>
-                                        <th>Desconto</th>
-                                        <th>Categoria</th>
-                                        <th>Valor Entrega</th>
-                                        <th>Valor</th>
-                                        <th></th>
+                                    <th>#</th>
+                                    <th>Ativo</th>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th>Tamanho</th>
+                                    <th>Estoque</th>
+                                    <th>Imagem</th>
+                                    <th>Desconto</th>
+                                    <th>Categoria</th>
+                                    <th>Valor Entrega</th>
+                                    <th>Valor</th>
+                                    <th></th>
                                     </thead>
                                     <tbody>
                                     <div class="text-right">
@@ -54,7 +53,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
                                         <tr>
                                             <td>{{$produto->id}}</td>
                                             <td>
-                                                <span class="badge badge-{{\App\Enums\SimNaoEnum::getClasseBadge($produto->status_produto)}}">
+                                                <span
+                                                    class="badge badge-{{\App\Enums\SimNaoEnum::getClasseBadge($produto->status_produto)}}">
                                                     {{\App\Enums\SimNaoEnum::getDescription($produto->status_produto)}}
                                                 </span>
                                             </td>
@@ -87,20 +87,24 @@ use Illuminate\Pagination\LengthAwarePaginator;
                             <div>
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-5 col-12">
-                                        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+                                        <div class="dataTables_info" id="datatable_info" role="status"
+                                             aria-live="polite">
                                             Mostrando {{ $models->currentPage() }} a {{ $models->count() }}
                                             de {{ $models->total() }} entradas
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-12">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                        <div class="dataTables_paginate paging_simple_numbers"
+                                             id="datatable_paginate">
                                             <nav class="bd-example" aria-label="data-example-id">
                                                 <ul class="pagination">
                                                     <li class="page-item">
-                                                        <a class="btn btn-primary {{empty($models->previousPageUrl())? 'disabled' : ''}}"  href="{{$models->previousPageUrl()}}">Volte</a>
+                                                        <a class="btn btn-primary {{empty($models->previousPageUrl())? 'disabled' : ''}}"
+                                                           href="{{$models->previousPageUrl()}}">Volte</a>
                                                     </li>
                                                     <li class="page-item">
-                                                        <a class="btn btn-primary {{empty($models->nextPageUrl()) ? 'disabled' : ''}}" href="{{$models->nextPageUrl()}}">Prox</a>
+                                                        <a class="btn btn-primary {{empty($models->nextPageUrl()) ? 'disabled' : ''}}"
+                                                           href="{{$models->nextPageUrl()}}">Prox</a>
                                                     </li>
                                                 </ul>
                                             </nav>
