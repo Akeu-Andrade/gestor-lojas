@@ -164,5 +164,6 @@ use App\Business\Site\Models\LojaConfig;
 <!-- ========================= SECTION CONTENT END// ========================= -->
 
 @include('site.layouts.footer')
+
 </body>
 </html>

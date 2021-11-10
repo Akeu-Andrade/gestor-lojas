@@ -48,7 +48,7 @@ class SiteModule extends Module
         Route::get('/welcome', [SiteController::class, 'index'])->name('welcome');
         Route::get('/pedido/{produto}', [SiteController::class, 'show']);
 
-        Route::post('/carrinho/adicionar', [PedidoController::class, 'adicionar'])->name('carrinho.adicionarr');
+        Route::post('/carrinho/adicionar', [PedidoController::class, 'adicionar'])->name('carrinho.adicionar');
 
         Route::get('/carrinho/adicionar', function() {
             return redirect()->route('index');

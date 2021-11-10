@@ -1,3 +1,8 @@
+@include('site.auth.login')
+@include('site.auth.user')
+@include('site.auth.senha')
+@include('site.auth.register')
+
 <header class="section-header">
     <section class="header-main border-bottom">
         <div class="container">
@@ -28,12 +33,19 @@
                             <span class="badge badge-pill badge-danger notify">0</span>
                         </div>
                         <div class="widget-header icontext">
-                            <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+                            <a href="" data-toggle="modal" class="icon icon-sm rounded-circle border"
+                               data-target={{Auth::id() != null ? "#modalUserForm" : "#modalLoginForm"}}  >
+                                <i class="fa fa-user"></i>
+                            </a>
                             <div class="text">
                                 <span class="text-muted">Bem Vindo!</span>
                                 <div>
-                                    <a href="#">Sign in</a> |
-                                    <a href="#"> Register</a>
+                                    @if(Auth::id() != null)
+                                        <a href="" data-toggle="modal" data-target="#modalUserForm"> Meu Perfil </a>
+                                    @else
+                                        <a href="" data-toggle="modal" data-target="#modalLoginForm"> Entrar </a> |
+                                        <a href="" data-toggle="modal" data-target="#modalRegisterForm"> Registre-se </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

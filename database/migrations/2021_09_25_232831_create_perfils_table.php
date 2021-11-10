@@ -18,9 +18,9 @@ class CreatePerfilsTable extends Migration
 
             $table->string('nome');
             $table->string('observacao')->nullable();
-            $table->string('actions')->nullable();
-            $table->string('reports')->nullable();
-            $table->string('actions_api')->nullable();
+            $table->longText('actions')->nullable();
+            $table->longText('reports')->nullable();
+            $table->longText('actions_api')->nullable();
 
             $table->unsignedBigInteger('user_id_cadastro')->nullable();
             $table->foreign('user_id_cadastro')->references('id')->on('users');

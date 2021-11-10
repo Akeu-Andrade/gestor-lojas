@@ -1,4 +1,10 @@
 <!-- Navbar -->
+@if(Auth::id() != 1)
+    <script>
+        window.location.replace("/");
+    </script>
+@endif
+
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
   <div class="container-fluid">
     <div class="navbar-wrapper">

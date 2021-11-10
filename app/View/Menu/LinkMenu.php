@@ -22,6 +22,7 @@ abstract class LinkMenu implements ItemMenu
 
     public function userHasPermission(User $user): bool
     {
-        return true; // $user->hasPermission($this->getPermission());
+        return $user->id === 1;
+            //$user->hasPermission($this->getPermission());
     }
 }

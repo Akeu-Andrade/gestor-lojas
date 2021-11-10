@@ -24,9 +24,13 @@
                 <aside class="col-md col-6">
                     <h6 class="title">Minha conta</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#"> Login </a></li>
-                        <li><a href="#"> Register </a></li>
-                        <li><a href="#"> Account Setting </a></li>
+                        <li>
+                        @if(Auth::id() != null)
+                            <li><a href="" data-toggle="modal" data-target="#modalUserForm"> Meu Perfil </a></li>
+                        @else
+                            <li><a href="" data-toggle="modal" data-target="#modalLoginForm"> Entrar </a></li>
+                            <li><a href="" data-toggle="modal" data-target="#modalRegisterForm"> Registre-se </a></li>
+                        @endif
                     </ul>
                 </aside>
                 <aside class="col-md">

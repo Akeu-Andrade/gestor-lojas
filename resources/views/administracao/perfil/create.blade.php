@@ -1,4 +1,8 @@
-@extends('layouts.app', ['titlePage' => __('Perfils')])
+@extends('layouts.app', ['titlePage' => __('Perfils'),
+'config' => [
+        'back' => route('produto.index'),
+    ],
+])
 
 @section('content')
     <div class="content">
