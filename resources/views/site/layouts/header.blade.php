@@ -1,7 +1,11 @@
-@include('site.auth.login')
-@include('site.auth.user')
-@include('site.auth.senha')
-@include('site.auth.register')
+
+@if(!empty(Auth::id()))
+    @include('site.auth.user')
+    @include('site.auth.senha')
+@else
+    @include('site.auth.login')
+    @include('site.auth.register')
+@endif
 
 <header class="section-header">
     <section class="header-main border-bottom">

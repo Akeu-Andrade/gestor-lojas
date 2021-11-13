@@ -165,5 +165,6 @@ use App\Business\Site\Models\LojaConfig;
 
 @include('site.layouts.footer')
 
+@yield ( 'scripts' )
 </body>
 </html>
