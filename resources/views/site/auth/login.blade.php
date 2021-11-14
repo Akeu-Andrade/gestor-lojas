@@ -53,3 +53,16 @@
         </div>
     </form>
 </div>
+
+@section('scripts')
+    @parent
+    @if($errors->has('email') || $errors->has('password'))
+        <script>
+            $(function() {
+                $('#modalLoginForm').modal({
+                    show: true
+                });
+            });
+        </script>
+    @endif
+@endsection

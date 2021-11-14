@@ -187,9 +187,9 @@ class User extends Authenticatable
             return true;
         }
 
-        if (!$this->perfil->hasAction($permission)) {
-            return false;
-        }
+//        if (!$this->perfil->hasAction($permission)) {
+//            return false;
+//        }
 
         return true;
     }
