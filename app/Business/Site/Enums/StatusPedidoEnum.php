@@ -8,4 +8,5 @@ use BenSampo\Enum\Enum;
 class StatusPedidoEnum extends Enum implements LocalizedEnum
 {
     const RE = 1; //Reservado
+    const PA = 2;
 }

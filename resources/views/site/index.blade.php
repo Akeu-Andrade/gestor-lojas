@@ -166,5 +166,15 @@ use App\Business\Site\Models\LojaConfig;
 @include('site.layouts.footer')
 
 @yield ( 'scripts' )
+@if( substr($isCarrinho, -9) == '/carrinho')
+    <script>
+        $(function() {
+
+            $('#modalLoginForm').modal({
+                show: true
+            });
+        });
+    </script>
+@endif
 </body>
 </html>

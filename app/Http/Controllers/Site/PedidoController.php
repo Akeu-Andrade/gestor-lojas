@@ -18,6 +18,7 @@ class PedidoController extends Controller
     {
         // obriga estar logado;
         $this->middleware('auth');
+
     }
 
     public function index()
@@ -127,6 +128,50 @@ class PedidoController extends Controller
 
         return redirect()->route('carrinho.index');
     }
+
+    public function concluir(Request $request): RedirectResponse
+    {
+        $this->middleware('VerifyCsrfToken');
+
+        $idpedido  = $request->input('pedido_id');
+        $idusuario = Auth::id();
+
+        $check_pedido = Pedido::where([
+            'id'      => $idpedido,
+            'user_comprador_id' => $idusuario,
+            'status'  => StatusPedidoEnum::RE
+        ])->exists();
+
+        if( !$check_pedido ) {
+            $request->session()->flash('mensagem-falha', 'Pedido não encontrado!');
+            return redirect()->route('carrinho.index');
+        }
+
+        $check_produtos = PedidoProduto::where([
+            'pedido_id' => $idpedido
+        ])->exists();
+        if(!$check_produtos) {
+            $request->session()->flash('mensagem-falha', 'Produtos do pedido não encontrados!');
+            return redirect()->route('carrinho.index');
+        }
+
+        PedidoProduto::where([
+            'pedido_id' => $idpedido
+        ])->update([
+            'status' => StatusPedidoEnum::PA
+        ]);
+        Pedido::where([
+            'id' => $idpedido
+        ])->update([
+            'status' => StatusPedidoEnum::PA
+        ]);
+
+        $request->session()->flash('mensagem-sucesso', 'Compra concluída com sucesso!');
+
+        return redirect()->route('carrinho.compras');
+    }
+
+
 
 
 

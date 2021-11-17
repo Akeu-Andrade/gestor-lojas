@@ -45,7 +45,7 @@ use App\Business\Site\Models\LojaConfig;
                                     </div>
                                 @endif
                             </div>
-                            <input type="number" hidden name="produtoId" value="{{$produto->id}}"/>
+                            <input type="number" hidden name="id" value="{{$produto->id}}"/>
                             <div style="padding-top: 30px">
                                 <button style="padding: 10px 50px 10px 50px" type="submit" class="btn btn-dark">
                                     Adicionar a sacola

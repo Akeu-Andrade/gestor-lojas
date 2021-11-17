@@ -59,6 +59,8 @@ class SiteController extends BaseController
             $this->setFolderView('site');
         }
 
+        $isCarrinho = $request->getSession()->get('_previous')['url'];
+
         return view( $this->getFolderView(). ".index", [
             'url' => $this->getUrl(),
             'produtos' => $produtos,
@@ -66,6 +68,7 @@ class SiteController extends BaseController
             'descontos' => $descontos,
             'velhos' => $velhos,
             'loja' => $loja,
+            'isCarrinho' => $isCarrinho,
             'allCategorias' => $allCategorias,
             'categorias' => $categorias
         ]);

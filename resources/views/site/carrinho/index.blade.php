@@ -45,9 +45,6 @@ use App\Business\Site\Models\LojaConfig;
                             </strong>
                         </a>
                         <span style="color: rgb(131, 131, 131); font-size: 13px;">
-{{--                            Desconto --}}
-                        </span>
-                        <span style="color: rgb(131, 131, 131); font-size: 13px;">
                             @if(empty($pedido_produto->produto->desconto_porcento))
                                 @php
                                     $valorProduto = $pedido_produto->produto->valor_uni
@@ -84,7 +81,7 @@ use App\Business\Site\Models\LojaConfig;
                 </span>
             </div>
             <div style="display: flex; width: 100%;">
-                <form method="POST" >
+                <form method="POST" action="{{ route('carrinho.concluir') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="pedido_id" value="{{ $pedido->id }}">
                     <button type="submit" data-position="top" data-delay="50"
