@@ -166,7 +166,7 @@ use App\Business\Site\Models\LojaConfig;
 @include('site.layouts.footer')
 
 @yield ( 'scripts' )
-@if( substr($isCarrinho, -9) == '/carrinho')
+@if( substr($isCarrinho, -9) == '/carrinho' or substr(preg_replace('/[0-9]+/', '', $isCarrinho), -8) == '/pedido/')
     <script>
         $(function() {
 
