@@ -29,6 +29,16 @@
                             </span>
                         </div>
                     </div>
+                    <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
+                    <label class="col-form-label">{{ __('Número de Whatsapp') }}</label>
+                        <input minlength="10" maxlength="11" type="text" class="form-control{{ $errors->has('numero') ? ' is-invalid' : '' }}"
+                               onkeypress="$(this).mask('(00) 0000-00009')" name="numero" id="input-numero" required placeholder="{{ __('Número') }}"
+                               value="{{ old('numero', !empty(auth()->user()) ? auth()->user()->numero : '') }}"/>
+                        @if ($errors->has('numero'))
+                            <span id="numero-error" class="error text-danger"
+                                  for="input-numero">{{ $errors->first('numero') }}</span>
+                        @endif
+                    </div>
                     <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
                         <label class="col-form-label" for="passwordInput" for="password">{{ __('Senha') }}</label>
                         <div class="input-group">
@@ -56,6 +66,7 @@
 
 @section('scripts')
     @parent
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
     <script>
         $(function () {

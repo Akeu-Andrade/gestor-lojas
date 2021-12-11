@@ -64,8 +64,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $formatado = preg_replace(array('/[^0-9 -]/', '/[ -]+/', '/^-|-$/'), '', $data['numero']);
+
         return User::create([
             'name' => $data['name'],
+            'numero' => $formatado,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
