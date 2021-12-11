@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('rua')->nullable();;
             $table->string('complemento')->nullable();;
             $table->string('bairro')->nullable();;
-            $table->smallInteger('numero')->nullable();;
+            $table->bigInteger('numero')->nullable();;
 
             $table->softDeletes();
             $table->rememberToken();

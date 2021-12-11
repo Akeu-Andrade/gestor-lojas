@@ -26,6 +26,12 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
+        $formatado = preg_replace(array('/[^0-9 -]/', '/[ -]+/', '/^-|-$/'), '', $request->numero);
+
+        $request->request->add([
+            'numero' => $formatado
+        ]);
+
         auth()->user()->update($request->all());
 
         return back()->withStatus(__('Profile successfully updated.'));

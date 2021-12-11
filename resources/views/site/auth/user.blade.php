@@ -35,6 +35,16 @@
                                   for="input-email">{{ $errors->first('email') }}</span>
                         @endif
                     </div>
+                    <label class="col-form-label">{{ __('Número de Whatsapp') }}</label>
+                    <div class="form-group{{ $errors->has('numero') ? ' has-danger' : '' }}">
+                        <input type="text" class="form-control{{ $errors->has('numero') ? ' is-invalid' : '' }}"
+                               onkeypress="$(this).mask('(00) 0000-00009')" name="numero" id="input-numero" required placeholder="{{ __('Número') }}"
+                               value="{{ old('numero', !empty(auth()->user()) ? auth()->user()->numero : '') }}"/>
+                        @if ($errors->has('numero'))
+                            <span id="numero-error" class="error text-danger"
+                                  for="input-numero">{{ $errors->first('numero') }}</span>
+                        @endif
+                    </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="submit" style="padding: 10px 50px 10px 50px" class="btn btn-primary">Salvar
                         </button>
@@ -50,4 +60,5 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 </div>

@@ -166,14 +166,17 @@ class PedidoController extends Controller
             'status' => StatusPedidoEnum::PA
         ]);
 
+        $this->enviarWhatsapp();
+
         $request->session()->flash('mensagem-sucesso', 'Compra concluída com sucesso!');
 
-        return redirect()->route('carrinho.compras');
+        return redirect()->route('carrinho.enviarWhatsapp');
     }
 
-
-
-
+    public function enviarWhatsapp()
+    {
+        dd();
+    }
 
     //Consulta as config da loja
     public function consultaLoja()

@@ -53,7 +53,6 @@ class SiteModule extends Module
         Route::delete('/carrinho/remover', [PedidoController::class, 'remover'])->name('carrinho.remover');
         Route::post('/carrinho/concluir', [PedidoController::class, 'concluir'])->name('carrinho.concluir');
 
-
         Route::get('/carrinho/adicionar', function() {
             return redirect()->route('index');
         });
