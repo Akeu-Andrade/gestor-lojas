@@ -74,7 +74,7 @@ class Menu
         } else {
             $html .= $this->renderItem($item);
         }
-//        dd($html);
+
         return $html;
     }
 

@@ -177,8 +177,6 @@ class PedidoController extends Controller
             ->groupBy('produto_id', 'pedido_id')
             ->get();
 
-        dd($produtoQtds);
-
         foreach ($produtoQtds as $produtoQtd){
             $produto = Produto::whereId($produtoQtd->produto_id)->first();
             Produto::whereId($produtoQtd->produto_id)
