@@ -21,9 +21,9 @@ use App\Business\Site\Models\LojaConfig;
 </div>
 
 <div class="col" style="padding-bottom: 20px">
-    <label for="link_whatsapp">Whatsapp Link <span
-            style="font-size: 11px"> &nbsp;&nbsp;(Finalização da venda) </span></label>
-    <input type="text" id="link_whatsapp" name="link_whatsapp" class="form-control"
+    <label for="link_whatsapp">Whatsapp<span
+            style="font-size: 11px"> &nbsp;&nbsp;(Finalização da venda ex: 5575999729095) </span></label>
+    <input type="text" minlength="13" required maxlength="13" id="link_whatsapp" name="link_whatsapp" class="form-control"
            value="{{$model->link_whatsapp ?? old('link_whatsapp')}}">
 </div>
 <div class="col" style="padding-bottom: 20px">

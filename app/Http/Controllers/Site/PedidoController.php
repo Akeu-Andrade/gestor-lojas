@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PedidoController extends Controller
 {
@@ -129,7 +130,7 @@ class PedidoController extends Controller
         return redirect()->route('carrinho.index');
     }
 
-    public function concluir(Request $request): RedirectResponse
+    public function concluir(Request $request)
     {
         $this->middleware('VerifyCsrfToken');
 
@@ -150,6 +151,7 @@ class PedidoController extends Controller
         $check_produtos = PedidoProduto::where([
             'pedido_id' => $idpedido
         ])->exists();
+
         if(!$check_produtos) {
             $request->session()->flash('mensagem-falha', 'Produtos do pedido não encontrados!');
             return redirect()->route('carrinho.index');
@@ -160,22 +162,62 @@ class PedidoController extends Controller
         ])->update([
             'status' => StatusPedidoEnum::PA
         ]);
+
         Pedido::where([
             'id' => $idpedido
         ])->update([
             'status' => StatusPedidoEnum::PA
         ]);
 
-        $this->enviarWhatsapp();
+        $produtoQtds = PedidoProduto::selectRaw(
+            'produto_id,
+                      count(produto_id) as quantidade')
+            ->where('pedido_id', '=', $idpedido)
+            ->join('produtos', 'produtos.id', '=', 'pedido_produtos.produto_id')
+            ->groupBy('produto_id', 'pedido_id')
+            ->get();
+
+        foreach ($produtoQtds as $produtoQtd){
+            $produto = Produto::whereId($produtoQtd->produto_id)->first();
+            Produto::whereId($produtoQtd->produto_id)
+                ->update([
+                    'quantidade' => $produto->quantidade - $produtoQtd->quantidade
+                ]);
+        }
 
         $request->session()->flash('mensagem-sucesso', 'Compra concluída com sucesso!');
 
-        return redirect()->route('carrinho.enviarWhatsapp');
+        return $this->enviarWhatsapp($request);
     }
 
-    public function enviarWhatsapp()
+    public function enviarWhatsapp(Request $request)
     {
-        dd();
+        $numero = 557599729095;
+
+        $pedido = PedidoProduto::selectRaw(
+                      'nome,
+                       pedido_id,
+                       desconto_porcento,
+                       produto_id, valor,
+                       count(produto_id) as quantidade,
+                       sum(valor / 100 * desconto_porcento) total_desconto,
+                       sum(valor) total')
+            ->where('pedido_id', '=', $request->pedido_id)
+            ->join('produtos', 'produtos.id', '=', 'pedido_produtos.produto_id')
+            ->groupBy('produto_id', 'nome', 'pedido_id', 'valor', 'desconto_porcento')
+            ->get();
+
+        $nome = Auth::user()->name;
+
+        $text = "Olá, meu nome é {$nome}, gostaria de fazer um pedido:";
+
+        foreach ($pedido as $produto){
+            $text = $text . " {$produto->quantidade}x $produto->nome (cód: {$produto->produto_id}) valor total: R$ {$produto->total};";
+        }
+
+        $url = "https://api.whatsapp.com/send/?phone=$numero&text=$text";
+
+        return Redirect::to($url);
     }
 
     //Consulta as config da loja

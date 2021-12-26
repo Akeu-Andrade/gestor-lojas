@@ -23,7 +23,7 @@ class CreateProdutosTable extends Migration
             $table->string('imagem')->nullable();
             $table->string('observacao')->nullable();
             $table->integer('status_produto')->default(SimNaoEnum::Sim);
-            $table->integer('desconto_porcento')->nullable();
+            $table->integer('desconto_porcento')->default(0);
             $table->double('valor_entrega', 6, 2)->default(0);
             $table->string('tamanho')->nullable();
 
