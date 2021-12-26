@@ -177,6 +177,8 @@ class PedidoController extends Controller
             ->groupBy('produto_id', 'pedido_id')
             ->get();
 
+        dd($produtoQtds);
+
         foreach ($produtoQtds as $produtoQtd){
             $produto = Produto::whereId($produtoQtd->produto_id)->first();
             Produto::whereId($produtoQtd->produto_id)
@@ -192,7 +194,7 @@ class PedidoController extends Controller
 
     public function enviarWhatsapp(Request $request)
     {
-        $numero = 557599729095;
+        $numero = LojaConfig::select('link_whatsapp')->first()->link_whatsapp;
 
         $pedido = PedidoProduto::selectRaw(
                       'nome,
@@ -212,7 +214,8 @@ class PedidoController extends Controller
         $text = "Olá, meu nome é {$nome}, gostaria de fazer um pedido:";
 
         foreach ($pedido as $produto){
-            $text = $text . " {$produto->quantidade}x $produto->nome (cód: {$produto->produto_id}) valor total: R$ {$produto->total};";
+            $total = $produto->total - $produto->total_desconto;
+            $text = $text . " {$produto->quantidade}x $produto->nome (cód: {$produto->produto_id}) valor total: R$ {$total};";
         }
 
         $url = "https://api.whatsapp.com/send/?phone=$numero&text=$text";

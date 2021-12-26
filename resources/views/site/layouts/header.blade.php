@@ -34,7 +34,17 @@
                     <div class="widgets-wrap float-md-right">
                         <div class="widget-header  mr-3">
                             <a href="{{ route('carrinho.index') }}" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
-                            <span class="badge badge-pill badge-danger notify">0</span>
+                            <span class="badge badge-pill badge-danger notify">
+                                <?php
+                                    use App\Business\Produto\Models\PedidoProduto;use App\Business\Site\Enums\StatusPedidoEnum;
+
+                                $qtd = PedidoProduto::
+                                    whereStatus(StatusPedidoEnum::RE)
+                                    ->join('produtos', 'produtos.id', '=', 'pedido_produtos.produto_id')
+                                    ->get();
+                                ?>
+                                {{$qtd->count()}}
+                            </span>
                         </div>
                         <div class="widget-header icontext">
                             <a href="" data-toggle="modal" class="icon icon-sm rounded-circle border"
