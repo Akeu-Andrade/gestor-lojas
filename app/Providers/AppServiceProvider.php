@@ -17,13 +17,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(IdeHelperServiceProvider::class);
-
-            $this->app->singleton(FakerGenerator::class, function () {
-                return FakerFactory::create('pt_BR');
-            });
-        }
+//        if ($this->app->environment() !== 'production') {
+//            $this->app->register(IdeHelperServiceProvider::class);
+//
+//            $this->app->singleton(FakerGenerator::class, function () {
+//                return FakerFactory::create('pt_BR');
+//            });
+//        }
 
         foreach (config('modules') as $module) {
             /**
