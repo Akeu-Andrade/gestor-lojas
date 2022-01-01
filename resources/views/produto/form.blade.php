@@ -66,7 +66,7 @@ use App\Business\Produto\Models\Produto;
     </div>
     <div class="col">
         <label for="valor_entrega">Valor da entrega<span style="font-size: 11px"> &nbsp;&nbsp;(Só caso de possível entrega) </span></label>
-        <input type="number" class="form-control" id="valor_entrega" name="valor_entrega"
+        <input type="number" required class="form-control" id="valor_entrega" name="valor_entrega"
                value="{{$model->valor_entrega ?? old('valor_entrega')}}">
     </div>
 </div>
