@@ -48,6 +48,7 @@
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="submit" style="padding: 10px 50px 10px 50px" class="btn btn-primary">Login</button>
+                    <a href="" data-toggle="modal" data-target="#modalRegisterForm" style="padding: 5px"> Registrar-se </a>
                 </div>
             </div>
         </div>

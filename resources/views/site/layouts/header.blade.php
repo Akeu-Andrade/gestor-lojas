@@ -14,7 +14,7 @@
                 <div class="col-lg-2 col-6">
                     <a href="/" class="brand-wrap">
                         <img width="50rm" src="{{$loja->getCaminhoLogo()}}" alt="logo" />
-                        {{$loja->nome}}
+{{--                        {{$loja->nome}}--}}
                     </a> <!-- brand-wrap.// -->
                 </div>
                 <div class="col-lg-6 col-12 col-sm-12">
